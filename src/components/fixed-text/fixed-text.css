@@ -13,6 +13,7 @@
     background-color: #353535;
     color: aliceblue;
 
+
 }
 .light{
 
@@ -28,12 +29,31 @@
         height: auto;
         margin-left:0px !important;
         width: 100% !important;
-        height: 0px;
+        
        
        
         
     }
    
+}
+.mobile-mode .text {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.mobile-name-text {
+  font-size: 2.5rem; /* Ajusta el tamaño según sea necesario */
+}
+
+.mobile-subtitle-text {
+  font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */
+}
+
+.relleno {
+  padding: 2rem; /* Ajusta el relleno según sea necesario */
+}
+.relleno{
+  min-height: 250px;
 }
 .link-text{
   font-size: 1.2rem;

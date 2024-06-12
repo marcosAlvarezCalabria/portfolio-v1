@@ -32,13 +32,14 @@ function MainContent({ className }) {
         const changeFocus = () => {
             const scrollY = window.scrollY;
             if(mobileMode){
-                if (scrollY >= 500 && scrollY < 750) {
+                if (scrollY >= 750 && scrollY < 900) {
                     setFocus("about");
+                    console.log("about")
                     
-                } else if (scrollY >= 800 && scrollY < 1700) {
+                } else if (scrollY >= 850 && scrollY < 1700) {
                     setFocus("projects");
                     
-                } else if (scrollY >= 1650 && scrollY < 1900) {
+                } else if (scrollY >= 1650 && scrollY < 3000) {
                     setFocus("skills");
                    
                 } else if (scrollY >= 1900 && scrollY < 2000) {
@@ -53,10 +54,10 @@ function MainContent({ className }) {
                 } else if (scrollY >= 300 && scrollY < 1200) {
                     setFocus("projects");
                    
-                } else if (scrollY >= 1300 && scrollY < 1600) {
+                } else if (scrollY >= 1200 && scrollY < 1400) {
                     setFocus("skills");
                   
-                } else if (scrollY >= 1600 && scrollY < 2900) {
+                } else if (scrollY >= 1400 && scrollY < 2900) {
                     setFocus("contact");
                   
                 }

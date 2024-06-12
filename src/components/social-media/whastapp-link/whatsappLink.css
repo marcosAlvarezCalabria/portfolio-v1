@@ -1,0 +1,35 @@
+.img-link {
+  width: 20px;
+}
+
+.invisible-link {
+  opacity: 0; /* Hide by default */
+  margin-top: 12px;
+  margin-right: 5px;
+  transition: opacity 0.5s; /* Smooth transition effect */
+}
+
+.invisible-link:hover {
+  opacity: 1; /* Fully visible on hover */
+}
+
+.invisible-link-light,
+.invisible-link-dark {
+  display: none; /* Hide by default */
+  width: 0;
+  height: 0; /* Adjust height as needed */
+  margin-left: 5px;
+  transition: width 0.5s;
+}
+
+.invisible-link-dark {
+  height: 10px;
+  background-color: white;
+}
+
+/* Show the invisible elements on hover */
+a:hover .invisible-link-light,
+a:hover .invisible-link-dark {
+  display: inline-block; /* Show on hover */
+  width: 300px; /* Final width */
+}

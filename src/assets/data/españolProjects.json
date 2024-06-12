@@ -1,0 +1,23 @@
+{
+    "projects": [
+        {
+            "name": "CineHub",
+            "image": "../../../public/images/cineHubImage.png",
+            "resume": "'CINEHUB'. Mi proyecto final en IronHack (Bootcamp); es una plataforma desarrollada con React que permite a los usuarios explorar películas, votar por sus favoritas, compartir opiniones y además la aplicaion te mostrara los cines mas cercanos, cuenta con una interfaz de usuario fluida y atractiva, un backend API REST robusto basado en ExpressJS, MongoDB y Mongoose, funciones autenticación y autorización para garantizar la seguridad de los usuarios.",
+            "technologies": ["JavaScript", "MongoDb", "Dockers", "React", "Node", "Express"],
+            "link": "https://cine-hub.fly.dev/",
+            "git": "https://github.com/marcosAlvarezCalabria/cine-hub-repo.git",
+            "video":"https://youtu.be/0vs-VgoezPc"
+            
+        },
+        {
+            "name": "ConoXchange",
+            "image": "../../../public/images/conoXchangeImage.png",
+            "resume": "ConoXchange es una plataforma web donde los usuarios pueden compartir sus habilidades y conocimientos, interactuar entre ellos y organizar encuentros para aprender y enseñar. Los usuarios pueden registrarse y gestionar sus perfiles, buscar y ofrecer habilidades, y planificar reuniones. La aplicación incluye funciones de registro, inicio y cierre de sesión con contraseñas cifradas, y ofrece autorización para que los usuarios autenticados puedan crear, leer, actualizar y eliminar habilidades y encuentros. ConoXchange facilita el intercambio de conocimientos y fortalece la comunidad al permitir a los usuarios conectarse y aprender unos de otros en un entorno seguro y colaborativo.",
+            "technologies": ["JavaScript", "Handlebars", "MongoDb", "Node", "Express"],
+            "link": "https://conoxchange.fly.dev",
+            "git": "https://github.com/marcosAlvarezCalabria/conoXchange.git",
+            "video":"https://youtu.be/QlVYOfzwYF4"
+        }
+    ]
+}

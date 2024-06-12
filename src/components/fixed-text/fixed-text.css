@@ -1,0 +1,73 @@
+.fixed-column{
+    position: fixed;
+    top: 0;
+  
+
+}
+.name-text{
+    font-size: 3rem;
+    height: 80%;
+}
+
+.dark{
+    background-color: #353535;
+    color: aliceblue;
+
+}
+.light{
+
+    background-color: aliceblue;
+    color: #353535;
+}
+
+
+@media (max-width: 768px) {
+    .fixed-column {
+        position:relative;
+        top: 0;
+        height: auto;
+        margin-left:0px !important;
+        width: 100% !important;
+        height: 0px;
+       
+       
+        
+    }
+   
+}
+.link-text{
+  font-size: 1.2rem;
+}
+.line-dark{
+    width: 0px;
+    height: 2px;
+    background-color:black;
+    margin-top: 12px;
+    margin-right: 5px;
+    animation: aumentar 0.5s forwards; /* Nombre de la animación y duración */
+}
+.line-light{
+    width: 0px;
+    height: 2px;
+    background-color: white;
+    margin-top: 12px;
+    margin-right: 5px;
+    animation: aumentar 0.5s forwards; /* Nombre de la animación y duración */
+}
+
+  @keyframes aumentar {
+    0% { /* Estado inicial de la animación */
+      width: 0px; /* Ancho inicial */
+      
+    }
+    100% { /* Estado final de la animación */
+      width: 80px; /* Ancho final */
+      
+    }
+  }
+  .list-light{
+    color: white !important;
+  }
+  .list-dark{
+    color: black;
+  }

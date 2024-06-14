@@ -13,91 +13,74 @@ function MainContent({ className }) {
     const [isEspanol, setIsEspanol] = useState(language === "español");
     const [focus, setFocus] = useState("");
     const { mode } = useContext(ModeContext);
-    const [mobileMode, setMobileMode]= useState(false)
-    const screenSize = window.innerWidth
-
-  
-
-   
+    const [mobileMode, setMobileMode] = useState(window.innerWidth <= 768);
 
     useEffect(() => {
+        const handleResize = () => {
+            setMobileMode(window.innerWidth <= 768);
+        };
 
-         if (screenSize <= 768) {
-            setMobileMode(true);
-          } else {
-            setMobileMode(false);
-          }
-      
-          
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
         const changeFocus = () => {
             const scrollY = window.scrollY;
-            if(mobileMode){
-                if (scrollY >= 750 && scrollY < 900) {
-                    setFocus("about");
-                    console.log("about")
-                    
-                } else if (scrollY >= 850 && scrollY < 1700) {
-                    setFocus("projects");
-                    
-                } else if (scrollY >= 1650 && scrollY < 3000) {
-                    setFocus("skills");
-                   
-                } else if (scrollY >= 1900 && scrollY < 2000) {
-                    setFocus("contact");
-                    
-                }
 
+            if (mobileMode) {
+                if (scrollY >= 600 && scrollY < 800) {
+                    setFocus("about");
+                } else if (scrollY >= 800 && scrollY < 1600) {
+                    setFocus("projects");
+                } else if (scrollY >= 1600 && scrollY < 2100) {
+                    setFocus("skills");
+                } else if (scrollY >= 1750) {
+                    setFocus("contact");
+                }
             } else {
                 if (scrollY >= 0 && scrollY < 250) {
                     setFocus("about");
-                  
-                } else if (scrollY >= 300 && scrollY < 1200) {
+                } else if (scrollY >= 250 && scrollY < 1200) {
                     setFocus("projects");
-                   
                 } else if (scrollY >= 1200 && scrollY < 1400) {
                     setFocus("skills");
-                  
                 } else if (scrollY >= 1400 && scrollY < 2900) {
                     setFocus("contact");
-                  
                 }
             }
-    
-            
         };
+
         window.addEventListener("scroll", changeFocus);
-        console.log(scrollY);
-       
+
         return () => {
             window.removeEventListener("scroll", changeFocus);
         };
-    }, [screenSize ,scrollY]);
+    }, [mobileMode]);
 
     useEffect(() => {
         setIsEspanol(language === "español");
     }, [language]);
 
-
-      
-
     return (
-        <div className={` row justify-content-${mobileMode ? "center" : "end "} ${className}`}>
-            <div className="main-content row col-sm-10 col-md-7  justify-content-center scroll-column">
+        <div className={`row justify-content-${mobileMode ? "center" : "end"} ${className}`}>
+            <div className="main-content row col-sm-10 col-md-7 justify-content-center scroll-column">
                 <section className={`section col-md-10 ${focus === "about" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="about">
                     <h2>{isEspanol ? "Sobre mí" : "About Me"}</h2>
                     <p>
                         {isEspanol
                             ? "Hola !!, Bienvenido a mi portfolio. Actualmente, me dedico a expandir mis conocimientos en tecnologías relacionadas con el desarrollo web, aunque estoy abierto a explorar cualquier tipo de tecnología. La perseverancia es mi principal virtud, y se refleja en mi trabajo, donde siempre me esfuerzo al máximo. Estoy entusiasmado por las oportunidades futuras y los proyectos desafiantes que me permitan seguir mejorando y ofreciendo soluciones innovadoras."
-
-
                             : "Hello!! Welcome to my portfolio. Currently, I am dedicated to expanding my knowledge in web development technologies, although I am open to exploring any type of technology. Perseverance is my main virtue, and it is reflected in my work, where I always strive to give my best. I am excited about future opportunities and challenging projects that allow me to continue improving and offering innovative solutions."}
                     </p>
                     {isEspanol
-                            ?  <Link href="https://drive.google.com/file/d/1zNZEJnCsHNUw_zCD_f5VGvlSAA9oQq5c/view?usp=drive_link">Curriculum Vitae </Link>
-                            : <a href="https://drive.google.com/file/d/1zNZEJnCsHNUw_zCD_f5VGvlSAA9oQq5c/view?usp=drive_link">View Full Resume</a>}
-                   
+                        ? <Link href="https://drive.google.com/file/d/1zNZEJnCsHNUw_zCD_f5VGvlSAA9oQq5c/view?usp=drive_link">Curriculum Vitae</Link>
+                        : <Link href="https://drive.google.com/file/d/1zNZEJnCsHNUw_zCD_f5VGvlSAA9oQq5c/view?usp=drive_link">View Full Resume</Link>}
                 </section>
-                <section className={`section mt-5 d-flex flex-column  col-md-10 ${focus === "projects" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="projects">
+
+                <section className={`section mt-5 d-flex flex-column col-md-10 ${focus === "projects" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="projects">
                     <h2>{isEspanol ? "Proyectos" : "Projects"}</h2>
                     <p>
                         {isEspanol
@@ -106,21 +89,17 @@ function MainContent({ className }) {
                     </p>
                     <ExpandableCard />
                 </section>
+
                 <section className={`section col-md-10 mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="skills">
                     <h2 className="mb-4">{isEspanol ? "Habilidades" : "Skills"}</h2>
-                    <h6>
-                        {isEspanol ? "- Lenguajes de programación." : "Programming Languages"}
-                    </h6>
+                    <h6>{isEspanol ? "- Lenguajes de programación." : "Programming Languages"}</h6>
                     <IconsSkills skills="languages" />
-                    <h6>
-                        {isEspanol ? "- Librerías y frameworks." : "- Libraries & Frameworks"}
-                    </h6>
+                    <h6>{isEspanol ? "- Librerías y frameworks." : "- Libraries & Frameworks"}</h6>
                     <IconsSkills skills="libraries" />
-                    <h6>
-                        {isEspanol ? "- Herramientas y plataformas." : "- Tools & Platforms"}
-                    </h6>
+                    <h6>{isEspanol ? "- Herramientas y plataformas." : "- Tools & Platforms"}</h6>
                     <IconsSkills skills="tools" />
                 </section>
+
                 <section className={`section col-md-10 mt-5 mb-5 ${focus === "contact" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="contact">
                     <h2>{isEspanol ? "Contacto" : "Contact"}</h2>
                     <p>
@@ -129,21 +108,19 @@ function MainContent({ className }) {
                             : "You can contact me via email or social media. I am available to discuss new opportunities and collaborate on interesting projects."}
                     </p>
                     <div className="email d-flex flex-column">
-                        <EmailLink></EmailLink>
-                        <WhatsappLink></WhatsappLink>
+                        <EmailLink />
+                        <WhatsappLink />
                     </div>
-                   
                 </section>
-                <footer className="col-md-7 text-center mt-5">
-                {isEspanol
-        ? <span>
-            Diseñado de manera libre en <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> y codificado en <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> por su servidor. Construido con Vite + React y <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> CSS. Todo el texto está en la tipografía Inter.
-          </span>
-        : <span>
-            Loosely designed in <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> and coded in <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> by yours truly. Built with Vite + React and <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> CSS. All text is set in the Inter typeface.
-          </span>
-      }
 
+                <footer className="col-md-7 text-center mt-5">
+                    {isEspanol
+                        ? <span>
+                            Diseñado de manera libre en <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> y codificado en <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> por su servidor. Construido con Vite + React y <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> CSS. Todo el texto está en la tipografía Inter.
+                          </span>
+                        : <span>
+                            Loosely designed in <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> and coded in <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> by yours truly. Built with Vite + React and <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> CSS. All text is set in the Inter typeface.
+                          </span>}
                 </footer>
             </div>
         </div>

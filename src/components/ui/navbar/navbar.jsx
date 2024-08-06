@@ -55,7 +55,7 @@ function NavbarComponent() {
             <div className="d-flex flex-column justify-content-start">
                 {screenWidth < 767 && <NavbarMenu/>}
                 {screenWidth >= 768 && (
-                    <div className="d-flex">
+                    <div className="d-flex div-buttons">
                         <div className="form-check form-switch m-2">
                             <input className="form-check-input" onClick={handleMode} type="checkbox" role="switch" id="flexSwitchCheckMode" />
                             <label className="form-check-label" htmlFor="flexSwitchCheckMode">

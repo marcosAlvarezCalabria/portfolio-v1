@@ -54,7 +54,7 @@ export default function NavbarMenu() {
         onClick={handleClick}
       >
         <MoreVertIcon />
-      </IconButton>
+      </IconButton >
       <Menu
         id="long-menu"
         MenuListProps={{
@@ -85,6 +85,7 @@ export default function NavbarMenu() {
                     width: "24px",
                     height: "26px",
                     borderRadius: "24%",
+                    
                     cursor: 'pointer',
                     border: mode === "light" ? "solid 1px #000" : "none" // Aplicación condicional del borde
                   }}>{languageSelected}</p>

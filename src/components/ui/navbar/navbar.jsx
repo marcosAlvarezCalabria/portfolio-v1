@@ -47,7 +47,11 @@ function NavbarComponent() {
     const languageSelected = language.slice(0, 2).toUpperCase();
    
     return (
-        <nav style={{ backgroundColor: navbarColor, maxHeight: "65px", boxShadow: screenWidth < 480 ? (mode === "dark" ? "2px 1px 15px rgba(236, 243, 255, 0.9)" : "2px 1px 10px rgba(4, 4, 4, 0.983)") : "none" }} className="navbar container-fluid sticky-top fixed-top">
+        <nav style={{ 
+            backgroundColor: navbarColor,
+            maxHeight: "55px",
+            boxShadow: screenWidth < 480 ? (mode === "dark" ? "2px 1px 15px rgba(236, 243, 255, 0.9)" : "2px 1px 10px rgba(4, 4, 4, 0.983)") : "none" }}
+            className="navbar container-fluid sticky-top fixed-top">
             <div className="d-flex flex-column justify-content-start">
                 {screenWidth < 767 && <NavbarMenu/>}
                 {screenWidth >= 768 && (

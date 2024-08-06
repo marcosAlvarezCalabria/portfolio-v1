@@ -11,11 +11,12 @@ import LanguageContext from '../../../../contexts/language.context';
 const ITEM_HEIGHT = 48;
 
 export default function NavbarMenu() {
-  const [sunColor, setSunColor] = useState("white");
+  const [sunColor, setSunColor] = useState("aliceblue");
   const { mode, toggleMode } = useContext(ModeContext);
   const { language, toggleLanguage } = useContext(LanguageContext)
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -42,7 +43,7 @@ export default function NavbarMenu() {
           borderRadius: "24%",
           cursor: 'pointer',
           border: mode === "light" ? "solid 1px #000" : "none", // Aplicación condicional del borde
-          margin: "5px"
+         marginLeft:"20px"
         }}
 
         aria-label="more"
@@ -64,8 +65,10 @@ export default function NavbarMenu() {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '12ch',
+           marginLeft:"2px",
+           marginTop:"15px",
+           background:"aliceblue",
+           boxShadow:screenWidth < 480 ? (mode === "dark" ? "2px 1px 15px rgba(236, 243, 255, 0.9)" : "2px 1px 10px rgba(4, 4, 4, 0.983)") : "none"
           },
         }}
       >

@@ -90,7 +90,7 @@ function MainContent({ className }) {
                     <ExpandableCard />
                 </section>
 
-                <section className={`section col-md-10 mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="skills">
+                <section className={`section col-md-10  mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="skills">
                     <h2 className="mb-4">{isEspanol ? "Habilidades" : "Skills"}</h2>
                     <h6>{isEspanol ? "- Lenguajes de programación." : "Programming Languages"}</h6>
                     <IconsSkills skills="languages" />

@@ -7,14 +7,15 @@ const over = {
 
 function VideoPlayer({ url, width, height }) {
   return (
-    <ReactPlayer
-      className="col-md-10 no-scroll"
+    <ReactPlayer 
+      className="col-md-10 no-scroll real"
       url={url}
       width={width}
       height={height}
       light
       style={over}
       playsinline
+      
     />
   );
 

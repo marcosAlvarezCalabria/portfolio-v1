@@ -103,7 +103,7 @@ export default function ExpandableCard() {
                             </div>
                             <div className='row ' style={{ overflowY: "auto", padding: "" }}>
                                 {/* <img src={project.image} alt="" /> */}
-                                <VideoPlayer  height="180px"  url={project.video} ></VideoPlayer>
+                                <VideoPlayer  height="150px"  url={project.video} ></VideoPlayer>
                                
                                 {expandedProjectId === index && (
                                     <section className='col-md-12' style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: 'px' }}>

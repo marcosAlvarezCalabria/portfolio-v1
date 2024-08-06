@@ -5,9 +5,9 @@
 
 }
 .name-text{
-    font-size: 3.2rem;
-    height: 80%;
-    text-align: center;
+    font-size: 4.0rem;
+    height: 100%;
+    
 }
 
 .dark{
@@ -16,6 +16,9 @@
 
 
 }
+.text {
+  min-width: 500px;
+}
 .light{
 
     background-color: aliceblue;
@@ -23,20 +26,7 @@
 }
 
 
-@media (max-width: 768px) {
-    .fixed-column {
-        position:relative;
-        top: 0;
-        height: auto;
-        margin-left:0px !important;
-        width: 100% !important;
-        
-       
-       
-        
-    }
-   
-}
+
 .mobile-mode .text {
   text-align: center;
   padding-top: 100px;
@@ -61,29 +51,31 @@
 }
 .line-dark{
     width: 0px;
-    height: 2px;
+    height: 3px;
     background-color:black;
-    margin-top: 12px;
-    margin-right: 5px;
+    position: relative;
     animation: aumentar 0.5s forwards; /* Nombre de la animación y duración */
 }
 .line-light{
     width: 0px;
-    height: 2px;
+    height: 3px;
     background-color: white;
-    margin-top: 12px;
-    margin-right: 5px;
-    animation: aumentar 0.5s forwards; /* Nombre de la animación y duración */
+    position: relative;
+    top: 10px;
+    animation: aumentar 0.4s forwards; /* Nombre de la animación y duración */
 }
 
   @keyframes aumentar {
     0% { /* Estado inicial de la animación */
       width: 0px; /* Ancho inicial */
+      height: 0px;
       
     }
     100% { /* Estado final de la animación */
-      width: 80px; /* Ancho final */
-      
+      width: 120px; /* Ancho final */
+      height: 3px;
+      margin-top: 20px;
+      margin-right: 20px;
     }
   }
   .list-light{
@@ -92,3 +84,48 @@
   .list-dark{
     color: black;
   }
+  .list {
+    max-height: 40px;
+    font-size: 35px;
+    font-weight: 600;
+  }
+  @media (max-width: 768px) {
+    body{
+      font-size:0.8rem;
+    }
+    .fixed-column {
+        position:relative;
+        top: 0;
+        height: auto;
+        margin-left:0px !important;
+        width: 100% !important;   
+    }
+    .text {
+      min-width: 200px;
+    }
+    .section{
+      max-width: 320px;
+    }
+   
+}
+@media (max-width: 980px) {
+  .fixed-column {
+      position:relative;
+      top: 0;
+      height: auto;
+      margin-left:0px !important;
+      width: 100% !important;   
+  }
+  .text {
+    min-width: 200px;
+  }
+  .main-content{
+    width: 600px;
+  }
+  .name-text{
+    font-size: 3.0rem;
+    height: 100%;
+    
+}
+ 
+}

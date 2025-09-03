@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import useScrollTracking from '../../hooks/useScrollTracking';
 import "./fixed-text.css";
 import LanguageContext from '../../contexts/language.context';
 import ModeContext from '../../contexts/mode.context';
@@ -8,39 +9,11 @@ function FixedText({ className }) {
     const { language } = useContext(LanguageContext);
     const { mode } = useContext(ModeContext);
     const [isespañol, setIsespañol] = useState(language === "español");
-    const [decoration, setDecoration] = useState("");
     const [modeIsDark, setModeIsDark] = useState(mode === "dark");
     const [mobileMode, setMobileMode] = useState(false);
-
-    const changeDecoration = () => {
-        if (window.scrollY >= 0 && window.scrollY < 250) {
-            setDecoration("about");
-        } else if (window.scrollY >= 300 && window.scrollY < 1200) {
-            setDecoration("projects");
-        } else if (window.scrollY >= 1200 && window.scrollY < 1550) {
-            setDecoration("skills");
-        } else if (window.scrollY >= 1500 && window.scrollY < 2000) {
-            setDecoration("contact");
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", changeDecoration);
-
-        const handleResize = () => {
-            console.log('Width changed:', window.innerWidth);
-            setMobileMode(window.innerWidth < 768);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        setMobileMode(window.innerWidth < 768);
-
-        return () => {
-            window.removeEventListener("scroll", changeDecoration);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    const activeSection = useScrollTracking(); // ¡Usar nuestro hook!
+    const decoration = activeSection;
+   
 
     useEffect(() => {
         setIsespañol(language === "español");

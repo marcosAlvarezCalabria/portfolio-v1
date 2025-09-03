@@ -17,6 +17,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.16.0",
     "react-magic-motion": "^1.1.2",
     "react-player": "^2.16.0",
     "react-world-flags": "^1.6.0",

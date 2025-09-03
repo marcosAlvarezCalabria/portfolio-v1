@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import useScrollTracking from "../../hooks/useScrollTracking";
 import LanguageContext from "../../contexts/language.context";
 import ExpandableCard from "../expandable-card/expandable-card";
 import "./main-content.css";
@@ -11,7 +12,7 @@ import Link from '@mui/material/Link';
 function MainContent({ className }) {
     const { language } = useContext(LanguageContext);
     const [isEspanol, setIsEspanol] = useState(language === "español");
-    const [focus, setFocus] = useState("");
+    const focus = useScrollTracking();
     const { mode } = useContext(ModeContext);
     const [mobileMode, setMobileMode] = useState(window.innerWidth <= 768);
 
@@ -27,39 +28,7 @@ function MainContent({ className }) {
         };
     }, []);
 
-    useEffect(() => {
-        const changeFocus = () => {
-            const scrollY = window.scrollY;
 
-            if (mobileMode) {
-                if (scrollY >= 600 && scrollY < 800) {
-                    setFocus("about");
-                } else if (scrollY >= 800 && scrollY < 1600) {
-                    setFocus("projects");
-                } else if (scrollY >= 1600 && scrollY < 2100) {
-                    setFocus("skills");
-                } else if (scrollY >= 1750) {
-                    setFocus("contact");
-                }
-            } else {
-                if (scrollY >= 0 && scrollY < 250) {
-                    setFocus("about");
-                } else if (scrollY >= 250 && scrollY < 1200) {
-                    setFocus("projects");
-                } else if (scrollY >= 1200 && scrollY < 1400) {
-                    setFocus("skills");
-                } else if (scrollY >= 1400 && scrollY < 2900) {
-                    setFocus("contact");
-                }
-            }
-        };
-
-        window.addEventListener("scroll", changeFocus);
-
-        return () => {
-            window.removeEventListener("scroll", changeFocus);
-        };
-    }, [mobileMode]);
 
     useEffect(() => {
         setIsEspanol(language === "español");

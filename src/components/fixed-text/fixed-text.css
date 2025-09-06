@@ -22,24 +22,27 @@
 .text {
   min-width: 500px;
 }
-.mobile-mode .text {
-  text-align: center;
+.mobile-mode-text {
   padding-top: 100px;
 }
 
-.mobile-name-text {
-  font-size: 2.5rem; /* Ajusta el tamaño según sea necesario */
+.name-text.mobile-name-text {
+    margin-top: 4rem;        /* Baja el nombre */    
+  font-size: 2.4rem;
+  white-space: nowrap;
 }
 
 .mobile-subtitle-text {
   font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */
 }
-
-.relleno {
-  padding: 2rem; /* Ajusta el relleno según sea necesario */
+.mobile-mode .icons {
+  margin-top: 1rem;         /* Reducir espacio superior de iconos */
 }
+
 .relleno{
-  min-height: 250px;
+  min-height: 50px;        /* Reducir altura mínima */
+  margin-top: 1rem;  
+  padding : 4rem;
 }
 .link-text{
   font-size: 1.2rem;

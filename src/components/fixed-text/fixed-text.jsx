@@ -12,8 +12,20 @@ function FixedText({ className }) {
     const [isespañol, setIsespañol] = useState(language === "español");
     const [modeIsDark, setModeIsDark] = useState(mode === "dark");
     const [mobileMode, setMobileMode] = useState(false);
-    const activeSection = useScrollTracking(); // ¡Usar nuestro hook!
+    const activeSection = useScrollTracking(); // ¡controla el scroll !
     const decoration = activeSection;
+
+    useEffect(() => {
+    const handleResize = () => {
+        setMobileMode(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    setMobileMode(window.innerWidth <= 768); // Detectar inicial
+    console.log ( mobileMode)
+
+    return () => window.removeEventListener('resize', handleResize);
+}, []);
    
 
     useEffect(() => {

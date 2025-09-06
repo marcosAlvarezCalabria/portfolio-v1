@@ -48,13 +48,13 @@
 
 
 .dark {
-    background-color: rgb(0, 0, 0);
-    color: aliceblue;
+    background-color: #111827;
+    color: #ffffff;
 }
 
-.light {
-    background-color: aliceblue;
-    color: black;
+.l.light {
+    background-color: #f8fafc;    /* Blanco grisáceo muy suave */
+    color: #1f2937;               /* Gris oscuro para buen contraste */
 }
 footer{
     font-size: 10px;

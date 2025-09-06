@@ -1,3 +1,33 @@
-body{
-    font-family:'Times New Roman', Times, serif
+:root {
+  /* Monochrome Pro Palette */
+  --primary: #ffffff;
+  --secondary: #6b7280;
+  --accent: #3b82f6;
+  --background: #111827;
+  --surface: #1f2937;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --border: #374151;
+  --hover: #4f46e5;
+}
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.02em;  /* Monospace se ve mejor con menos spacing */
+  transition: all 0.3s ease;
+}
+
+/* Mejorar títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;              /* Semi-bold para títulos */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Mejorar párrafos */
+p {
+  line-height: 1.7;
+  font-weight: 400;
 }

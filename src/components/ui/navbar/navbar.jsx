@@ -7,7 +7,7 @@ import NavbarMenu from './navbarMenu/navbarMenu';
 function NavbarComponent() {
     const { mode, toggleMode } = useContext(ModeContext);
     const { language, toggleLanguage } = useContext(LanguageContext);
-    const [navbarColor, setNavbarColor] = useState("black");
+    const [navbarColor, setNavbarColor] = useState(mode === "dark" ? "#111827" : "#ffffff");
     const [sunColor, setSunColor] = useState("white");
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -17,7 +17,7 @@ function NavbarComponent() {
             setSunColor("white");
 
             if (scrollPosition <= 90 || screenWidth < 480) {
-                setNavbarColor("black");
+                setNavbarColor(mode === "dark" ? "#111827" : "#ffffff");
             } else {
                 setNavbarColor("transparent");
             }

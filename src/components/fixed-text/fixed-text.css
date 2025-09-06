@@ -11,21 +11,17 @@
 }
 
 
-.dark{
-    background-color: #353535;
-    color: aliceblue;
-
-
+.fixed-column.dark {
+    background-color: #111827;
+    color: #ffffff;
+}
+.fixed-column.light {
+    background-color: #f8fafc;
+    color: #1f2937;
 }
 .text {
   min-width: 500px;
 }
-.light{
-
-    background-color: aliceblue;
-    color: #353535;
-}
-
 .mobile-mode .text {
   text-align: center;
   padding-top: 100px;

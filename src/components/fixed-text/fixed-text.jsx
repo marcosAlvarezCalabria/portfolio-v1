@@ -25,7 +25,7 @@ function FixedText({ className }) {
         <div className={`${className} col-md-4 p-5 fixed-column align-content-center h-100 ${mobileMode ? 'mobile-mode' : ''}`}>
             <div className='mb-2'></div>
             <div className="text">
-               <h1 className={`name-text ${mobileMode ? 'mobile-name-text' : ''}`}><Typewriter text="Marcos Alvarez" speed={190} /></h1>
+               <h1 className={`name-text ${mobileMode ? 'mobile-name-text' : ''}`}><Typewriter text="Marcos Alvarez" speed={100} /></h1>
                 <h5 className={`mb-5 ${mobileMode ? 'mobile-subtitle-text' : ''}`}>Web developer</h5>
                 <nav className='nav d-none mb-5 d-md-block'>
                     <ul style={{ listStyle: "none" }} className='list-unstyled'>

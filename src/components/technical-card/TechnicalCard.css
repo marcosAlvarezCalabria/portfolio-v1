@@ -1,0 +1,205 @@
+.technical-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Estilo base de las cards */
+.tech-card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-card-dark {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.tech-card-light {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header estilo terminal */
+.tech-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #30363d;
+  background: linear-gradient(90deg, #21262d 0%, #161b22 100%);
+}
+
+.tech-card-light .tech-card-header {
+  background: linear-gradient(90deg, #e1e7ed 0%, #f6f8fa 100%);
+  border-bottom: 1px solid #d0d7de;
+}
+
+/* Dots estilo macOS */
+.terminal-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27ca3f; }
+
+/* Título con prompt */
+.project-title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: #58a6ff;
+  font-size: 0.9rem;
+}
+
+.tech-card-light .project-title {
+  color: #0969da;
+}
+
+.prompt {
+  color: #7c3aed;
+  margin-right: 0.5rem;
+}
+
+.expand-icon {
+  color: #8b949e;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+/* Contenido expandible */
+.tech-card-content {
+  overflow: hidden;
+}
+
+.video-section {
+  padding: 1rem;
+  border-bottom: 1px solid #30363d;
+}
+
+.tech-card-light .video-section {
+  border-bottom: 1px solid #d0d7de;
+}
+
+.content-section {
+  padding: 1rem;
+}
+
+.code-block {
+  margin-bottom: 1rem;
+}
+
+.comment {
+  color: #7c3aed;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.code-block p {
+  color: #f0f6fc;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.tech-card-light .code-block p {
+  color: #24292f;
+}
+
+/* Tech stack */
+.tech-stack {
+  margin-bottom: 1rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tech-tag {
+  background: #21262d;
+  color: #58a6ff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid #30363d;
+}
+
+.tech-card-light .tech-tag {
+  background: #ddf4ff;
+  color: #0969da;
+  border: 1px solid #54aeff66;
+}
+
+/* Links de proyecto */
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.link-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #238636;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.link-button:hover {
+  background: #2ea043;
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+
+.tech-card-light .link-button {
+  background: #1f883d;
+}
+
+.tech-card-light .link-button:hover {
+  background: #238636;
+}
+
+/* Hover effect */
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.tech-card-light:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .links {
+    flex-direction: column;
+  }
+  
+  .link-button {
+    justify-content: center;
+  }
+}

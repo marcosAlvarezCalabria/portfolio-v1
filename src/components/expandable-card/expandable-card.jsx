@@ -37,13 +37,11 @@ export default function ExpandableCard() {
                         transition={{ type: "spring", stiffness: 200, damping: 20 }}
                         style={{
                             position: 'relative',
-                            background: expandedProjectId === index ? 'white' : 'white',
                             borderRadius: '8px',
                             overflow: 'hidden',
                             marginBottom: expandedProjectId === index ? '40px' : "20px",
                             marginTop: expandedProjectId === index ? '40px' : "20px",
-                            color: expandedProjectId === index ? "black" : "black",
-                            transition: 'color 0.3s ease',
+                            transition: 'all 0.3s ease',
                         }}
                     >
                         <div className=''  onClick={()=>{handleProjectShow(index)}}

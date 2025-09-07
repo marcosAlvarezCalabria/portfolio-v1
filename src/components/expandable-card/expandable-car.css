@@ -9,17 +9,36 @@
 .expandable{
     cursor: pointer;
 }
-.expandable-light:hover{
-
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 5px 12px 24px rgba(4, 4, 4, 0.983);
-
+/* Estilos base de las cards (sin hover) */
+.MagicCard.expandable-dark {
+    background-color: #0d1117 !important;
+    border: 1px solid #30363d !important;
+    color: #f0f6fc !important;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s ease;
 }
-.expandable-dark:hover{
 
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 2px 2px 14px rgba(253, 253, 253, 0.983);
+.MagicCard.expandable-light {
+    background-color: #f6f8fa !important;
+    border: 1px solid #d0d7de !important;
+    color: #24292f !important;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s ease;
+}
 
+/* Efectos hover */
+.expandable-dark:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    border-color: #58a6ff;
+}
+
+.expandable-light:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: #0969da;
 }
  .resume{
     max-height: 100px !important;

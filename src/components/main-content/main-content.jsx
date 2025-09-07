@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import useScrollTracking from "../../hooks/useScrollTracking";
 import LanguageContext from "../../contexts/language.context";
-import ExpandableCard from "../expandable-card/expandable-card";
+//import ExpandableCard from "../expandable-card/expandable-card";
 import "./main-content.css";
 import IconsSkills from "../icons-skills/icons-skills";
 import ModeContext from "../../contexts/mode.context";
 import WhatsappLink from "../social-media/whastapp-link/whatsappLink";
 import EmailLink from "../social-media/email-link/emailLink";
 import Link from '@mui/material/Link';
+import TechnicalCard from "../technical-card/TechnicalCard";
+import projectsDataEnglish from "../../assets/data/englishProjects.json";
+import projectDataespañol from "../../assets/data/españolProjects.json";
+
 
 function MainContent({ className }) {
     const { language } = useContext(LanguageContext);
@@ -15,6 +19,7 @@ function MainContent({ className }) {
     const focus = useScrollTracking();
     const { mode } = useContext(ModeContext);
     const [mobileMode, setMobileMode] = useState(window.innerWidth <= 768);
+    const { projects } = language === "español" ? projectDataespañol : projectsDataEnglish;
 
     useEffect(() => {
         const handleResize = () => {
@@ -56,7 +61,7 @@ function MainContent({ className }) {
                             ? "Desde que inicié mi trayectoria en el desarrollo web, primero de manera autodidacta y luego a través de varios bootcamps, no he dejado de trabajar en diversos proyectos. A continuación, te muestro algunos de los más destacados. Si tienes curiosidad por ver más, te invito a visitar mi perfil en GitHub."
                             : "Since I began my journey in web development, first self-taught and then through several bootcamps, I haven't stopped working on various projects. Below, I showcase some of the most notable ones. If you're curious to see more, I invite you to visit my GitHub profile."}
                     </p>
-                    <ExpandableCard />
+                    <TechnicalCard projects={projects} />
                 </section>
 
                 <section className={`section col-md-10  mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="skills">

@@ -4,6 +4,7 @@ import FixedText from '../../components/fixed-text/fixed-text';
 import MainContent from '../../components/main-content/main-content';
 import "./main-page.css";
 import ModeContext from '../../contexts/mode.context';
+import useSpotlight from '../../hooks/useSpotlight';
 
  
 
@@ -11,6 +12,9 @@ import ModeContext from '../../contexts/mode.context';
 function MainPage() {
     const mode = useContext(ModeContext);
     const [theme, setTheme] = useState(mode);
+    
+    // Initialize spotlight effect
+    useSpotlight();
 
     useEffect(() => {
         setTheme(mode);

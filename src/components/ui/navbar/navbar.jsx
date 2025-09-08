@@ -56,7 +56,7 @@ function NavbarComponent() {
                 {screenWidth < 767 && <NavbarMenu/>}
                 {screenWidth >= 768 && (
                     <div className="ios-switch-container">
-                        <label className="ios-switch theme-switch">
+                        <label className={`ios-switch theme-switch ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}>
                             <input 
                                 type="checkbox" 
                                 checked={mode === 'light'} 
@@ -68,7 +68,7 @@ function NavbarComponent() {
                             </span>
                         </label>
                         
-                        <label className="ios-switch language-switch">
+                        <label className={`ios-switch language-switch ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}>
                             <input 
                                 type="checkbox" 
                                 checked={language === 'english'} 

@@ -44,10 +44,32 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: #f8fafc;
   transition: .4s;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Theme switch button colors */
+.theme-switch input:checked + .ios-slider:before {
+  background-color: #666;
+}
+
+.language-switch input:checked + .ios-slider:before {
+  background-color: #196acc;
+}
+
+/* Dark theme button variations */
+.ios-switch.dark-theme .ios-slider:before {
+  background-color: #e5e7eb;
+}
+
+.ios-switch.dark-theme.theme-switch input:checked + .ios-slider:before {
+  background-color: #d7d1c6;
+}
+
+.ios-switch.dark-theme.language-switch input:checked + .ios-slider:before {
+  background-color:  #196acc;
 }
 
 .ios-switch input:checked + .ios-slider {
@@ -103,18 +125,35 @@
   box-shadow: 0 0 1px var(--hover, #475569);
 }
 
-/* Dark mode adaptations */
-.ios-slider {
-  background-color: var(--border, #374151);
-  border: 1px solid var(--border, #374151);
-}
+/* Remove duplicate dark mode adaptations since we added it above */
 
 .ios-slider .switch-icon,
 .ios-slider .switch-text {
-  color: var(--text-secondary, #9ca3af);
+  color: #1f2937;
 }
 
 .ios-switch input:checked + .ios-slider .switch-icon,
 .ios-switch input:checked + .ios-slider .switch-text {
-  color: var(--text-primary, #ffffff);
+  color: #ffffff;
+}
+
+/* Theme-based switch styling */
+.ios-switch.dark-theme .ios-slider {
+  background-color: #374151;
+  border: 1px solid #374151;
+}
+
+.ios-switch.light-theme .ios-slider {
+  background-color: #cbd5e1;
+  border: 1px solid #cbd5e1;
+}
+
+.ios-switch.dark-theme .ios-slider .switch-icon,
+.ios-switch.dark-theme .ios-slider .switch-text {
+  color: #9ca3af;
+}
+
+.ios-switch.light-theme .ios-slider .switch-icon,
+.ios-switch.light-theme .ios-slider .switch-text {
+  color: #1f2937;
 }

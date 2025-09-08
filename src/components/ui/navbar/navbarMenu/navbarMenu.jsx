@@ -9,7 +9,13 @@ import LanguageContext from '../../../../contexts/language.context';
 
 
 export default function NavbarMenu() {
-  const [sunColor, setSunColor] = useState("aliceblue");
+  const getButtonColor = () => {
+    return mode === 'dark' ? '#374151' : '#f1f5f9';
+  };
+  
+  const getIconColor = () => {
+    return mode === 'dark' ? '#ffffff' : '#1f2937';
+  };
   const { mode, toggleMode } = useContext(ModeContext);
   const { language, toggleLanguage } = useContext(LanguageContext)
   const [anchorEl, setAnchorEl] = useState(null);
@@ -35,13 +41,14 @@ export default function NavbarMenu() {
     <div>
       <IconButton
         style={{
-          backgroundColor: sunColor,
+          backgroundColor: getButtonColor(),
           width: "24px",
           height: "26px",
           borderRadius: "24%",
           cursor: 'pointer',
-          border: mode === "light" ? "solid 1px #000" : "none", // Aplicación condicional del borde
-         marginLeft:"20px"
+          border: mode === "light" ? "solid 1px #cbd5e1" : "solid 1px #30363d",
+          marginLeft:"20px",
+          color: getIconColor()
         }}
 
         aria-label="more"
@@ -65,7 +72,8 @@ export default function NavbarMenu() {
           style: {
            marginLeft:"2px",
            marginTop:"15px",
-           background:"aliceblue",
+           background: mode === 'dark' ? '#1f2937' : '#f1f5f9',
+           border: mode === 'dark' ? '1px solid #374151' : '1px solid #cbd5e1',
            boxShadow:screenWidth < 480 ? (mode === "dark" ? "2px 1px 15px rgba(236, 243, 255, 0.9)" : "2px 1px 10px rgba(4, 4, 4, 0.983)") : "none"
           },
         }}
@@ -73,7 +81,7 @@ export default function NavbarMenu() {
 
         <MenuItem>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <label className="ios-switch theme-switch">
+            <label className={`ios-switch theme-switch ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}>
               <input 
                 type="checkbox" 
                 checked={mode === 'light'} 
@@ -85,7 +93,7 @@ export default function NavbarMenu() {
               </span>
             </label>
             
-            <label className="ios-switch language-switch">
+            <label className={`ios-switch language-switch ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}>
               <input 
                 type="checkbox" 
                 checked={language === 'english'} 

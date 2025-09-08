@@ -16,7 +16,7 @@
     color: #ffffff;
 }
 .fixed-column.light {
-    background-color: #f8fafc;
+    background-color: #f1f5f9;
     color: #1f2937;
 }
 .text {
@@ -58,7 +58,7 @@
 .line-light{
     width: 0px;
     height: 3px;
-    background-color: white;
+    background-color: #475569;
     position: relative;
     top: 10px;
     animation: aumentar 0.4s forwards; /* Nombre de la animación y duración */
@@ -78,7 +78,7 @@
     }
   }
   .list-light{
-    color: white !important;
+    color: #475569 !important;
   }
   .list-dark{
     color: black;

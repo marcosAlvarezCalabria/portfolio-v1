@@ -49,7 +49,7 @@ function IconsSkills({skills}){
     };
 
     return (
-        <div className="container-fluid p-2 icons-skills">
+        <div className="container-fluid icons-skills">
             {renderIcons()}
         </div>
     );

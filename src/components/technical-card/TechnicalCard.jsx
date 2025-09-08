@@ -27,9 +27,9 @@ const TechnicalCard = ({ projects }) => {
                     {/* Header de la card */}
                     <div className="tech-card-header" onClick={() => toggleExpand(index)}>
                         <div className="terminal-dots">
-                            <span className="dot red"></span>
-                            <span className="dot yellow"></span>
-                            <span className="dot green"></span>
+                            <span className="dot red">×</span>
+                            <span className="dot yellow">−</span>
+                            <span className="dot green">+</span>
                         </div>
                         <div className="project-title">
                             <span className="prompt">~/projects/$</span> {project.name}
@@ -50,7 +50,7 @@ const TechnicalCard = ({ projects }) => {
                                 transition={{ duration: 0.3 }}
                             >
                                 <div className="video-section">
-                                    <VideoPlayer url={project.video} height="200px" />
+                                    <VideoPlayer url={project.video} height={window.innerWidth <= 768 ? "120px" : "200px"} />
                                 </div>
                                 
                                 <div className="content-section">

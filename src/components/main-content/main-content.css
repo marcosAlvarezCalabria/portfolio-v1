@@ -9,13 +9,21 @@
 }
 
 .focus-light {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 5px 12px 24px rgba(4, 4, 4, 0.983);
+    transform: translateY(-15px) scale(1.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff !important;
+    border: 2px solid #3b82f6;
+    z-index: 10;
+    position: relative;
 }
 
 .focus-dark {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow:2px 5px 14px rgba(255, 255, 255, 0.99);
+    transform: translateY(-15px) scale(1.08);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+    background-color: #1f2937 !important;
+    border: 2px solid #58a6ff;
+    z-index: 10;
+    position: relative;
 }
 .main-content{
     margin-top: 100px !important;
@@ -52,8 +60,8 @@
     color: #ffffff;
 }
 
-.l.light {
-    background-color: #f8fafc;    /* Blanco grisáceo muy suave */
+.light {
+    background-color: #f1f5f9;    /* Gris claro profesional */
     color: #1f2937;               /* Gris oscuro para buen contraste */
 }
 footer{

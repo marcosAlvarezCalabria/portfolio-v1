@@ -8,8 +8,6 @@ import LanguageContext from '../../../../contexts/language.context';
 
 
 
-const ITEM_HEIGHT = 48;
-
 export default function NavbarMenu() {
   const [sunColor, setSunColor] = useState("aliceblue");
   const { mode, toggleMode } = useContext(ModeContext);
@@ -30,7 +28,7 @@ export default function NavbarMenu() {
   const handleLanguage = () => {
     toggleLanguage();
   };
-  const languageSelected = language.slice(0, 2).toUpperCase();
+  
 
   return (
 
@@ -73,44 +71,32 @@ export default function NavbarMenu() {
         }}
       >
 
-        <MenuItem  >
-          <div>
-            <div className="form-check form-switch">
-              <input className="form-check-input" onClick={handleLanguage} type="checkbox" role="switch" id="flexSwitchCheckLanguage" />
-              <label className="" htmlFor="flexSwitchCheckLanguage">
-                <p className=' text-center language-icon'
-
-                  style={{
-                    backgroundColor: sunColor,
-                    width: "24px",
-                    height: "26px",
-                    borderRadius: "24%",
-                    
-                    cursor: 'pointer',
-                    border: mode === "light" ? "solid 1px #000" : "none" // Aplicación condicional del borde
-                  }}>{languageSelected}</p>
-              </label>
-            </div>
-            <div className="form-check form-switch">
-              <input className="form-check-input" onClick={handleMode} type="checkbox" role="switch" id="flexSwitchCheckMode" />
-              <label className="form-check-label" htmlFor="flexSwitchCheckMode">
-                <i
-                  style={{
-                    backgroundColor: sunColor,
-                    width: "24px",
-                    borderRadius: "50%",
-                    border: mode === "light" ? "solid 1px #000" : "none",
-                    cursor: 'pointer',
-
-                  }}
-                  className={`p-1 fa fa-${mode === "dark" ? "sun-o" : "moon-o"} mode-icon`}
-                  aria-hidden="true"
-                ></i>
-              </label>
-            </div>
-
+        <MenuItem>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <label className="ios-switch theme-switch">
+              <input 
+                type="checkbox" 
+                checked={mode === 'light'} 
+                onChange={handleMode}
+              />
+              <span className="ios-slider">
+                <i className={`fa fa-moon-o switch-icon`}></i>
+                <i className={`fa fa-sun-o switch-icon`}></i>
+              </span>
+            </label>
+            
+            <label className="ios-switch language-switch">
+              <input 
+                type="checkbox" 
+                checked={language === 'english'} 
+                onChange={handleLanguage}
+              />
+              <span className="ios-slider">
+                <span className="switch-text">ES</span>
+                <span className="switch-text">EN</span>
+              </span>
+            </label>
           </div>
-
         </MenuItem>
 
       </Menu>

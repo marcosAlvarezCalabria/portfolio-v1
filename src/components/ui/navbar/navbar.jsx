@@ -55,43 +55,30 @@ function NavbarComponent() {
             <div className="d-flex flex-column justify-content-start">
                 {screenWidth < 767 && <NavbarMenu/>}
                 {screenWidth >= 768 && (
-                    <div className="d-flex div-buttons">
-                        <div className="form-check form-switch m-2">
-                            <input className="form-check-input" onClick={handleMode} type="checkbox" role="switch" id="flexSwitchCheckMode" />
-                            <label className="form-check-label" htmlFor="flexSwitchCheckMode">
-                                <i
-                                    style={{
-                                        backgroundColor: sunColor,
-                                        width: "24px",
-                                        borderRadius: "50%",
-                                        border: mode === "light" ? "solid 1px #000" : "none",
-                                        cursor: 'pointer',
-                                        
-
-                                    }}
-                                    className={`p-1 fa fa-${mode === "dark" ? "sun-o" : "moon-o"} mode-icon`}
-                                    aria-hidden="true"
-                                ></i>
-                            </label>
-                        </div>
-                        <div className="form-check form-switch m-2 ">
-                            <input className="form-check-input " onClick={handleLanguage} type="checkbox" role="switch" id="flexSwitchCheckLanguage" />
-                            <label className="" htmlFor="flexSwitchCheckLanguage">
-                                <p
-                                    className="text-center language-icon"
-                                    style={{
-                                        backgroundColor: sunColor,
-                                        width: "24px",
-                                        height: "26px",
-                                        borderRadius: "24%",
-                                        cursor: 'pointer',
-                                        border: mode === "light" ? "solid 1px #000" : "none",
-                                    }}
-                                >
-                                    {languageSelected}
-                                </p>
-                            </label>
-                        </div>
+                    <div className="ios-switch-container">
+                        <label className="ios-switch theme-switch">
+                            <input 
+                                type="checkbox" 
+                                checked={mode === 'light'} 
+                                onChange={handleMode}
+                            />
+                            <span className="ios-slider">
+                                <i className={`fa fa-moon-o switch-icon`}></i>
+                                <i className={`fa fa-sun-o switch-icon`}></i>
+                            </span>
+                        </label>
+                        
+                        <label className="ios-switch language-switch">
+                            <input 
+                                type="checkbox" 
+                                checked={language === 'english'} 
+                                onChange={handleLanguage}
+                            />
+                            <span className="ios-slider">
+                                <span className="switch-text">ES</span>
+                                <span className="switch-text">EN</span>
+                            </span>
+                        </label>
                     </div>
                 )}
             </div>

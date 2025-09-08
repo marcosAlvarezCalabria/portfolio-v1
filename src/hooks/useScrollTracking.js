@@ -36,11 +36,11 @@ function useScrollTracking() {
   // Valores para desktop (los que ajustamos antes)
   if (scrollY >= 0 && scrollY < 350) {
     newSection = 'about';
-  } else if (scrollY >= 350 && scrollY < 1100) {
+  } else if (scrollY >= 350 && scrollY < 800) {
     newSection = 'projects';
-  } else if (scrollY >= 1100 && scrollY < 1400) {
+  } else if (scrollY >= 800 && scrollY < 1000) {
     newSection = 'skills';
-  } else if (scrollY >= 1400) {
+  } else if (scrollY >= 1000) {
     newSection = 'contact';
   }
 }

@@ -9,11 +9,15 @@ function NavbarComponent() {
     const [navbarColor, setNavbarColor] = useState(mode === "dark" ? "#111827" : "#f1f5f9");
     const [sunColor, setSunColor] = useState("white");
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [showLightBeam, setShowLightBeam] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
             setSunColor("white");
+
+            // Control light beam visibility
+            setShowLightBeam(scrollPosition === 0);
 
             if (scrollPosition <= 90 || screenWidth < 480) {
                 setNavbarColor(mode === "dark" ? "#111827" : "#f1f5f9");
@@ -56,7 +60,7 @@ function NavbarComponent() {
             boxShadow: "none" }}
             className="navbar container-fluid sticky-top fixed-top">
             <div className="d-flex flex-column justify-content-start">
-                <div className="simple-buttons-container">
+                <div className={`simple-buttons-container ${showLightBeam ? 'show-light-beam' : ''}`}>
                     <button 
                         className={`simple-btn theme-btn ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}
                         onClick={handleMode}

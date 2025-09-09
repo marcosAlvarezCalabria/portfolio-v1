@@ -186,9 +186,17 @@
         height: auto;
         margin-left:0px !important;
         width: 100% !important;   
-        background: transparent;
-        box-shadow: none;
+        background: #111827 !important; /* Dark theme to match page */
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        z-index: 2;
     }
+    
+    .fixed-column.light {
+        background: #f1f5f9 !important; /* Light theme to match page */
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        color: #1f2937 !important; /* Dark text for light background */
+.    }
     .text {
       min-width: 200px;
       text-align: center;

@@ -41,7 +41,21 @@ function NavbarComponent() {
 
     useEffect(() => {
         setNavbarColor(mode === "dark" ? "#111827" : "#f1f5f9");
-    }, [mode]);
+        
+        // Update particles color based on mode for mobile
+        if (screenWidth < 768) {
+            const body = document.body;
+            if (body) {
+                if (mode === "light") {
+                    body.classList.add('light-particles');
+                    body.classList.remove('dark-particles');
+                } else {
+                    body.classList.add('dark-particles');
+                    body.classList.remove('light-particles');
+                }
+            }
+        }
+    }, [mode, screenWidth]);
 
     const handleMode = () => {
         toggleMode();

@@ -1,9 +1,65 @@
-/* iOS Style Switches */
-.ios-switch-container {
+/* Simple Buttons Container */
+.simple-buttons-container {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-left: 20px;
+}
+
+/* Simple Button Styles */
+.simple-btn {
+  background: transparent;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Light theme buttons */
+.simple-btn.light-theme {
+  border-color: #374151;
+  color: #374151;
+}
+
+.simple-btn.light-theme:hover {
+  background-color: #374151;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Dark theme buttons */
+.simple-btn.dark-theme {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.simple-btn.dark-theme:hover {
+  background-color: #ffffff;
+  color: #1f2937;
+  transform: scale(1.05);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+  .simple-buttons-container {
+    gap: 0.5rem;
+    margin-left: 10px;
+  }
+  
+  .simple-btn {
+    padding: 3px 6px;
+    font-size: 10px;
+    min-width: 24px;
+    height: 24px;
+  }
 }
 
 .ios-switch {

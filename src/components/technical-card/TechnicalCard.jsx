@@ -88,17 +88,6 @@ const TechnicalCard = ({ projects }) => {
                                         )}
                                     </div>
                                     
-                                    <div className="tech-stack">
-                                        <span className="comment">// Technologies used</span>
-                                        <div className="tech-tags">
-                                            {project.technologies.map((tech, idx) => (
-                                                <span key={idx} className="tech-tag">
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    
                                     <div className="project-links">
                                         <span className="comment">// Quick access</span>
                                         <div className="links">
@@ -108,6 +97,17 @@ const TechnicalCard = ({ projects }) => {
                                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-button">
                                                 <span className="icon">🚀</span> Live Demo
                                             </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="tech-stack">
+                                        <span className="comment">// Technologies used</span>
+                                        <div className="tech-tags">
+                                            {project.technologies.map((tech, idx) => (
+                                                <span key={idx} className="tech-tag">
+                                                    {tech}
+                                                </span>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

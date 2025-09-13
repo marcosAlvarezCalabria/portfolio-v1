@@ -5,6 +5,7 @@ import LanguageContext from '../../contexts/language.context';
 import ModeContext from '../../contexts/mode.context';
 import IconsSocialMedia from '../icons-social-media/icons-social-media';
 import Typewriter from '../ui/typewriter/Typewriter';
+import ScrollIndicator from '../scroll-indicator/scroll-indicator';
 
 function FixedText({ className }) {
     const { language } = useContext(LanguageContext);
@@ -63,6 +64,7 @@ function FixedText({ className }) {
             <div className={`icons ${mobileMode ? "relleno" : ""}`}>
                 <IconsSocialMedia />
             </div>
+            {mobileMode && <ScrollIndicator />}
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function useScrollTracking() {
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState(null); // Empezar sin sección activa
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // Detectar cambios de tamaño de pantalla
@@ -19,17 +19,17 @@ function useScrollTracking() {
       const scrollY = window.scrollY;
       console.log("Scroll actual:", scrollY, "Móvil:", isMobile);
       
-      let newSection = 'about';
+      let newSection = null; // Por defecto ninguna sección activa
       
       if (isMobile) {
-  // Valores para móvil (del código original)
-  if (scrollY >= 600 && scrollY < 800) {
+  // Valores ajustados para móvil
+  if (scrollY >= 200 && scrollY < 800) {
     newSection = 'about';
-  } else if (scrollY >= 800 && scrollY < 1600) {
+  } else if (scrollY >= 800 && scrollY < 1200) {
     newSection = 'projects';
-  } else if (scrollY >= 1600 && scrollY < 2100) {
+  } else if (scrollY >= 1200 && scrollY < 1600) {
     newSection = 'skills';
-  } else if (scrollY >= 1750) {
+  } else if (scrollY >= 1600) {
     newSection = 'contact';
   }
 } else {

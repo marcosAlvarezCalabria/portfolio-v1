@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import LanguageContext from '../../contexts/language.context';
 import './scroll-indicator.css';
 
 function ScrollIndicator() {
     const [isVisible, setIsVisible] = useState(true);
+    const { language } = useContext(LanguageContext);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,7 +24,9 @@ function ScrollIndicator() {
             <div className="scroll-hand">
                 👇
             </div>
-            <span className="scroll-text">Desliza para ver más</span>
+            <span className="scroll-text">
+                {language === 'español' ? 'Desliza para ver más' : 'Swipe to see more'}
+            </span>
         </div>
     );
 }

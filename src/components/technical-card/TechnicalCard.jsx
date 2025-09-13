@@ -7,11 +7,25 @@ import './TechnicalCard.css';
 
 const TechnicalCard = ({ projects }) => {
     const [expandedId, setExpandedId] = useState(null);
+    const [textExpanded, setTextExpanded] = useState({});
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const { mode } = useContext(ModeContext);
     const { language } = useContext(LanguageContext);
 
     const toggleExpand = (index) => {
         setExpandedId(expandedId === index ? null : index);
+    };
+
+    const toggleTextExpand = (index) => {
+        setTextExpanded(prev => ({
+            ...prev,
+            [index]: !prev[index]
+        }));
+    };
+
+    const truncateText = (text, maxLength = 120) => {
+        if (!text || text.length <= maxLength) return text;
+        return text.substring(0, maxLength) + '...';
     };
 
     return (
@@ -56,7 +70,22 @@ const TechnicalCard = ({ projects }) => {
                                 <div className="content-section">
                                     <div className="code-block">
                                         <span className="comment">// Project description</span>
-                                        <p>{project.resume}</p>
+                                        <p>
+                                            {isMobile && project.resume.length > 120 && !textExpanded[index]
+                                                ? truncateText(project.resume)
+                                                : project.resume}
+                                        </p>
+                                        {isMobile && project.resume.length > 120 && (
+                                            <button 
+                                                className="btn-expand-description"
+                                                onClick={() => toggleTextExpand(index)}
+                                            >
+                                                {textExpanded[index] 
+                                                    ? (language === 'español' ? 'Ver menos' : 'Show less')
+                                                    : (language === 'español' ? 'Leer más' : 'Read more')
+                                                }
+                                            </button>
+                                        )}
                                     </div>
                                     
                                     <div className="tech-stack">

@@ -1,0 +1,119 @@
+/* Video Player Container */
+.video-player-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-player-container > div {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Custom Play Button Overlay */
+.custom-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.custom-play-overlay:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Play Button */
+.custom-play-button {
+  width: 60px;
+  height: 60px;
+  background: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.custom-play-button:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+.custom-play-button:active {
+  transform: scale(0.95);
+}
+
+/* Play Icon */
+.play-icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+  margin-left: 3px; /* Slight offset to center visually */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .custom-play-button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .play-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-play-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .play-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+  }
+}
+
+/* Dark/Light Mode Support */
+.tech-card-dark .custom-play-button {
+  background: #3b82f6;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.tech-card-dark .custom-play-button:hover {
+  background: #2563eb;
+  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.6);
+}
+
+.tech-card-light .custom-play-button {
+  background: #2563eb;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+}
+
+.tech-card-light .custom-play-button:hover {
+  background: #1d4ed8;
+  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+}

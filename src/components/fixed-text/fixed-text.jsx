@@ -34,6 +34,19 @@ function FixedText({ className }) {
         setModeIsDark(mode === "dark");
     }, [language, mode]);
 
+    const handleSmoothScroll = (e, targetId) => {
+        e.preventDefault();
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const headerHeight = 70; // Altura del header fijo
+            const offsetTop = targetElement.offsetTop - headerHeight;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <div className={`${className} col-md-4 p-5 fixed-column align-content-center h-100 ${mobileMode ? 'mobile-mode' : ''}`}>
             <div className='mb-2'></div>
@@ -44,19 +57,19 @@ function FixedText({ className }) {
                     <ul style={{ listStyle: "none" }} className='list-unstyled'>
                         <div className='d-flex list'>
                             {decoration === "about" && (<div className={`line line-${modeIsDark ? "light" : "dark"}`}></div>)}
-                            <li><a className={`text-decoration-none link-text ${decoration === "about" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#about">{isespañol ? "Sobre mí" : "About me"}</a></li>
+                            <li><a className={`text-decoration-none link-text ${decoration === "about" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#about" onClick={(e) => handleSmoothScroll(e, 'about')}>{isespañol ? "Sobre mí" : "About me"}</a></li>
                         </div>
                         <div className='d-flex list'>
                             {decoration === "projects" && (<div className={`line line-${modeIsDark ? "light" : "dark"}`}></div>)}
-                            <li><a className={`text-decoration-none link-text ${decoration === "projects" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#projects">{isespañol ? "Proyectos" : "Projects"}</a></li>
+                            <li><a className={`text-decoration-none link-text ${decoration === "projects" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#projects" onClick={(e) => handleSmoothScroll(e, 'projects')}>{isespañol ? "Proyectos" : "Projects"}</a></li>
                         </div>
                         <div className='d-flex list'>
                             {decoration === "skills" && (<div className={`line line-${modeIsDark ? "light" : "dark"}`}></div>)}
-                            <li><a className={`text-decoration-none link-text ${decoration === "skills" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#skills">Skills</a></li>
+                            <li><a className={`text-decoration-none link-text ${decoration === "skills" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#skills" onClick={(e) => handleSmoothScroll(e, 'skills')}>Skills</a></li>
                         </div>
                         <div className='d-flex list'>
                             {decoration === "contact" && (<div className={`line line-${modeIsDark ? "light" : "dark"}`}></div>)}
-                            <li><a className={`text-decoration-none link-text ${decoration === "contact" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#contact">{isespañol ? "Contacto" : "Contact"}</a></li>
+                            <li><a className={`text-decoration-none link-text ${decoration === "contact" && `list-${modeIsDark ? "light" : "dark"}`}`} href="#contact" onClick={(e) => handleSmoothScroll(e, 'contact')}>{isespañol ? "Contacto" : "Contact"}</a></li>
                         </div>
                     </ul>
                 </nav>

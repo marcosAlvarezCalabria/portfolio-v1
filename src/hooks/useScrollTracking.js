@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 
 function useScrollTracking() {
-  const [activeSection, setActiveSection] = useState(null); // Empezar sin sección activa
+  const [activeSection, setActiveSection] = useState('about'); // Empezar con "about" activo
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isTablet, setIsTablet] = useState(window.innerWidth > 768 && window.innerWidth <= 1024);
 
   // Detectar cambios de tamaño de pantalla
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width > 768 && width <= 1024);
     };
     
     window.addEventListener('resize', handleResize);
@@ -32,8 +35,19 @@ function useScrollTracking() {
   } else if (scrollY >= 1600) {
     newSection = 'contact';
   }
+} else if (isTablet) {
+  // Valores para tablet (similar a desktop pero ajustado)
+  if (scrollY >= 0 && scrollY < 400) {
+    newSection = 'about';
+  } else if (scrollY >= 400 && scrollY < 900) {
+    newSection = 'projects';
+  } else if (scrollY >= 900 && scrollY < 1200) {
+    newSection = 'skills';
+  } else if (scrollY >= 1200) {
+    newSection = 'contact';
+  }
 } else {
-  // Valores para desktop (los que ajustamos antes)
+  // Valores para desktop
   if (scrollY >= 0 && scrollY < 350) {
     newSection = 'about';
   } else if (scrollY >= 350 && scrollY < 800) {
@@ -50,7 +64,7 @@ function useScrollTracking() {
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile]); // Importante: incluir isMobile
+  }, [isMobile, isTablet]); // Importante: incluir isMobile e isTablet
   
   return activeSection;
 }

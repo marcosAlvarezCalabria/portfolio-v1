@@ -8,14 +8,14 @@ function ProjectsCard({ className }) {
     const { language } = useContext(LanguageContext);
     const projects = language === 'español' ? projectsDataespañol.projects : projectsDataEnglish.projects;
     const [expandedProjects, setExpandedProjects] = useState({});
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
     console.log("Projects data:", projects);
     console.log("Is mobile:", isMobile);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 1024);
         };
         
         window.addEventListener('resize', handleResize);

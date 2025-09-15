@@ -8,7 +8,7 @@ import './TechnicalCard.css';
 const TechnicalCard = ({ projects }) => {
     const [expandedId, setExpandedId] = useState(null);
     const [textExpanded, setTextExpanded] = useState({});
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
     const { mode } = useContext(ModeContext);
     const { language } = useContext(LanguageContext);
 
@@ -64,7 +64,7 @@ const TechnicalCard = ({ projects }) => {
                                 transition={{ duration: 0.3 }}
                             >
                                 <div className="video-section">
-                                    <VideoPlayer url={project.video} height={window.innerWidth <= 768 ? "120px" : "200px"} />
+                                    <VideoPlayer url={project.video} height={window.innerWidth <= 1024 ? "120px" : "200px"} />
                                 </div>
                                 
                                 <div className="content-section">

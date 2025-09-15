@@ -27,7 +27,7 @@
 }
 
 /* Solo mostrar en móvil */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .btn-expand-description {
     display: none;
   }
@@ -255,7 +255,7 @@
 }
 
 /* =================== RESPONSIVE =================== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .video-section {
     padding: 0.5rem;
   }

@@ -13,6 +13,10 @@ function FixedText({ className }) {
     const [isespañol, setIsespañol] = useState(language === "español");
     const [modeIsDark, setModeIsDark] = useState(mode === "dark");
     const [mobileMode, setMobileMode] = useState(false);
+    const [animationsStarted, setAnimationsStarted] = useState(false);
+    const [showSubtitle, setShowSubtitle] = useState(false);
+    const [showNavigation, setShowNavigation] = useState(false);
+    const [showIcons, setShowIcons] = useState(false);
     const activeSection = useScrollTracking(); // ¡controla el scroll !
     const decoration = activeSection;
 
@@ -34,6 +38,42 @@ function FixedText({ className }) {
         setModeIsDark(mode === "dark");
     }, [language, mode]);
 
+    // Animaciones de entrada
+    useEffect(() => {
+        if (mobileMode) {
+            // En móvil, mostrar todo inmediatamente
+            setShowSubtitle(true);
+            setShowNavigation(true);
+            setShowIcons(true);
+            setAnimationsStarted(true);
+        } else {
+            // En desktop, iniciar animaciones secuenciales
+            setAnimationsStarted(true);
+
+            // Secuencia de animaciones
+            const timer1 = setTimeout(() => {
+                console.log('Mostrando subtítulo');
+                setShowSubtitle(true);
+            }, 800);
+
+            const timer2 = setTimeout(() => {
+                console.log('Mostrando navegación');
+                setShowNavigation(true);
+            }, 1100);
+
+            const timer3 = setTimeout(() => {
+                console.log('Mostrando íconos');
+                setShowIcons(true);
+            }, 1400);
+
+            return () => {
+                clearTimeout(timer1);
+                clearTimeout(timer2);
+                clearTimeout(timer3);
+            };
+        }
+    }, [mobileMode]);
+
     const handleSmoothScroll = (e, targetId) => {
         e.preventDefault();
         const targetElement = document.getElementById(targetId);
@@ -52,8 +92,8 @@ function FixedText({ className }) {
             <div className='mb-2'></div>
             <div className="text">
                <h1 className={`name-text ${mobileMode ? 'mobile-name-text' : ''}`}><Typewriter text="Marcos Alvarez" speed={100} /></h1>
-                <h5 className={`mb-5 ${mobileMode ? 'mobile-subtitle-text' : ''}`}>Web developer</h5>
-                <nav className='nav d-none mb-5 d-md-block'>
+                <h5 className={`mb-5 ${mobileMode ? 'mobile-subtitle-text' : ''} ${!mobileMode ? (showSubtitle ? 'animate-slide-in-left' : 'hidden-left') : ''}`}>Web developer</h5>
+                <nav className={`nav d-none mb-9 d-md-block mt-9 ${!mobileMode ? (showNavigation ? 'animate-slide-in-right' : 'hidden-right') : ''}`}>
                     <ul style={{ listStyle: "none" }} className='list-unstyled'>
                         <div className='d-flex list'>
                             {decoration === "about" && (<div className={`line line-${modeIsDark ? "light" : "dark"}`}></div>)}
@@ -74,7 +114,7 @@ function FixedText({ className }) {
                     </ul>
                 </nav>
             </div>
-            <div className={`icons ${mobileMode ? "relleno" : ""}`}>
+            <div className={`icons ${mobileMode ? "relleno" : ""} ${!mobileMode ? (showIcons ? 'animate-slide-in-bottom' : 'hidden-icons') : ''}`}>
                 <IconsSocialMedia />
             </div>
             {mobileMode && <ScrollIndicator />}

@@ -97,6 +97,29 @@
 footer{
     font-size: 10px;
     color: darkgrey;
-    
-    
+}
+
+/* Desktop entrance animations for sections */
+@media (min-width: 769px) {
+  /* Initial hidden state */
+  .hidden-bottom {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  /* Fade in up animation */
+  .animate-fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s ease-out;
+  }
+
+  /* Make sure mobile doesn't inherit these styles */
+  @media (max-width: 768px) {
+    .hidden-bottom,
+    .animate-fade-in-up {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 }

@@ -19,6 +19,11 @@ function MainContent({ className }) {
     const focus = useScrollTracking();
     const { mode } = useContext(ModeContext);
     const [mobileMode, setMobileMode] = useState(window.innerWidth <= 768);
+    const [showAbout, setShowAbout] = useState(false);
+    const [showProjects, setShowProjects] = useState(false);
+    const [showSkills, setShowSkills] = useState(false);
+    const [showContact, setShowContact] = useState(false);
+    const [showFooter, setShowFooter] = useState(false);
     const { projects } = language === "español" ? projectDataespañol : projectsDataEnglish;
 
     useEffect(() => {
@@ -39,10 +44,37 @@ function MainContent({ className }) {
         setIsEspanol(language === "español");
     }, [language]);
 
+    // Animaciones secuenciales solo para desktop
+    useEffect(() => {
+        if (!mobileMode) {
+            // Iniciar las animaciones después de que termine el typewriter
+            const timer1 = setTimeout(() => setShowAbout(true), 2000); // Primero "Sobre mí"
+            const timer2 = setTimeout(() => setShowProjects(true), 2500); // Luego "Proyectos"
+            const timer3 = setTimeout(() => setShowSkills(true), 3000); // Luego "Skills"
+            const timer4 = setTimeout(() => setShowContact(true), 3500); // Luego "Contacto"
+            const timer5 = setTimeout(() => setShowFooter(true), 4000); // Finalmente el footer
+
+            return () => {
+                clearTimeout(timer1);
+                clearTimeout(timer2);
+                clearTimeout(timer3);
+                clearTimeout(timer4);
+                clearTimeout(timer5);
+            };
+        } else {
+            // En mobile, mostrar todo inmediatamente
+            setShowAbout(true);
+            setShowProjects(true);
+            setShowSkills(true);
+            setShowContact(true);
+            setShowFooter(true);
+        }
+    }, [mobileMode]);
+
     return (
         <div className={`row justify-content-${mobileMode ? "center" : "end"} ${className}`}>
             <div className="main-content row col-sm-10 col-md-7 justify-content-center scroll-column">
-                <section className={`section col-md-10 ${focus === "about" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="about">
+                <section className={`section col-md-10 ${focus === "about" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showAbout ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="about">
                     <h2>{isEspanol ? "Sobre mí" : "About Me"}</h2>
                     <p>
                         {isEspanol
@@ -54,7 +86,7 @@ function MainContent({ className }) {
                         : <Link href="https://drive.google.com/file/d/1RNP-jjtUWx_aBX_1n5Dim_bxAICpcT2v/view?usp=drive_link">View Full Resume</Link>}
                 </section>
 
-                <section className={`section mt-5 d-flex flex-column col-md-10 ${focus === "projects" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="projects">
+                <section className={`section mt-5 d-flex flex-column col-md-10 ${focus === "projects" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showProjects ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="projects">
                     <h2>{isEspanol ? "Proyectos" : "Projects"}</h2>
                     <p>
                         {isEspanol
@@ -64,7 +96,7 @@ function MainContent({ className }) {
                     <TechnicalCard projects={projects} />
                 </section>
 
-                <section className={`section col-md-10  mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="skills">
+                <section className={`section col-md-10  mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showSkills ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="skills">
                     <h2 className="mb-4">{isEspanol ? "Habilidades" : "Skills"}</h2>
                     <h6>{isEspanol ? "- Lenguajes de programación." : "Programming Languages"}</h6>
                     <IconsSkills skills="languages" />
@@ -74,7 +106,7 @@ function MainContent({ className }) {
                     <IconsSkills skills="tools" />
                 </section>
 
-                <section className={`section col-md-10 mt-5 mb-5 ${focus === "contact" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""}`} id="contact">
+                <section className={`section col-md-10 mt-5 mb-5 ${focus === "contact" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showContact ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="contact">
                     <h2>{isEspanol ? "Contacto" : "Contact"}</h2>
                     <p>
                         {isEspanol
@@ -87,7 +119,7 @@ function MainContent({ className }) {
                     </div>
                 </section>
 
-                <footer className="col-md-7 text-center mt-5">
+                <footer className={`col-md-7 text-center mt-5 ${!mobileMode ? (showFooter ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`}>
                     {isEspanol
                         ? <span>
                             Diseñado de manera libre en <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> y codificado en <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> por su servidor. Construido con Vite + React y <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> CSS. Todo el texto está en la tipografía Inter.

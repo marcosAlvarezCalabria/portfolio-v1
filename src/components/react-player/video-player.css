@@ -117,3 +117,13 @@
   background: #1d4ed8;
   box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
 }
+
+/* Video Loading */
+.video-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #666;
+  font-size: 1rem;
+}

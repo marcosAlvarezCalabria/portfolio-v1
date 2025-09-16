@@ -9,7 +9,7 @@ import react from "../../../public/images/react.png"
 import express from "../../../public/images/expressjs.png"
 import dockers from "../../../public/images/dockers.png"
 import git from "../../../public/images/git.png"
-import gitHub from "../../../public/images/github.png"
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 
 
@@ -40,7 +40,7 @@ function IconsSkills({skills}){
                     <img className="image" src={express} alt="Express" />
                     <img className="image" src={dockers} alt="Dockers" />
                     <img className="image" src={git} alt="Git" />
-                    <img className="image" src={gitHub} alt="Github" />
+                    <GitHubIcon className="image github-icon" style={{ fontSize: 60, color: '#333' }} />
                 </>
             );
         } else {

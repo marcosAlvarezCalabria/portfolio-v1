@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import ReactPlayer from "react-player";
+import React, { useState, Suspense, lazy } from "react";
 import './video-player.css';
+
+const ReactPlayer = lazy(() => import("react-player"));
 
 const over = {
   overflow: 'hidden'
@@ -31,32 +32,34 @@ function VideoPlayer({ url, width = "100%", height }) {
 
   return (
     <div className="video-player-container">
-      {!showPlayer ? (
-        <div className="video-thumbnail-wrapper" style={{ width: videoWidth, height }}>
+      <Suspense fallback={<div className="video-loading">Loading video...</div>}>
+        {!showPlayer ? (
+          <div className="video-thumbnail-wrapper" style={{ width: videoWidth, height }}>
+            <ReactPlayer
+              className="col-md-10 no-scroll real"
+              url={url}
+              width={videoWidth}
+              height={height}
+              light={true}
+              playing={false}
+              controls={false}
+              style={{...over, maxWidth: videoWidth, maxHeight: height}}
+            />
+            {customPlayButton}
+          </div>
+        ) : (
           <ReactPlayer
             className="col-md-10 no-scroll real"
             url={url}
             width={videoWidth}
             height={height}
-            light={true}
-            playing={false}
-            controls={false}
+            playing={playing}
+            controls={true}
             style={{...over, maxWidth: videoWidth, maxHeight: height}}
+            playsinline
           />
-          {customPlayButton}
-        </div>
-      ) : (
-        <ReactPlayer
-          className="col-md-10 no-scroll real"
-          url={url}
-          width={videoWidth}
-          height={height}
-          playing={playing}
-          controls={true}
-          style={{...over, maxWidth: videoWidth, maxHeight: height}}
-          playsinline
-        />
-      )}
+        )}
+      </Suspense>
     </div>
   );
 

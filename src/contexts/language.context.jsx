@@ -19,5 +19,4 @@ export function LanguageContextProvider({children}){
     <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
     )
 };
-export const lan = ()=> useContext(LanguageContext);
 export default LanguageContext

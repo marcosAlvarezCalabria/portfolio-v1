@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import useScrollTracking from "../../hooks/useScrollTracking";
 import LanguageContext from "../../contexts/language.context";
-//import ExpandableCard from "../expandable-card/expandable-card";
 import "./main-content.css";
 import IconsSkills from "../icons-skills/icons-skills";
 import ModeContext from "../../contexts/mode.context";

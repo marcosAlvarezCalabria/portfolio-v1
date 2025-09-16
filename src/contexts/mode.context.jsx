@@ -19,5 +19,4 @@ const [mode, setMode] = useState("dark")
         <ModeContext.Provider value= {value}>{children}</ModeContext.Provider>
     )
 };
-export const mod = ()=> useContext(ModeContext);
 export default ModeContext

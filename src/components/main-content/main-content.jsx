@@ -1,13 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, lazy, Suspense } from "react";
 import useScrollTracking from "../../hooks/useScrollTracking";
 import LanguageContext from "../../contexts/language.context";
+
 import "./main-content.css";
-import IconsSkills from "../icons-skills/icons-skills";
 import ModeContext from "../../contexts/mode.context";
-import WhatsappLink from "../social-media/whastapp-link/whatsappLink";
-import EmailLink from "../social-media/email-link/emailLink";
 import Link from '@mui/material/Link';
-import TechnicalCard from "../technical-card/TechnicalCard";
+
+// Lazy loading de componentes pesados
+const IconsSkills = lazy(() => import("../icons-skills/icons-skills"));
+const WhatsappLink = lazy(() => import("../social-media/whastapp-link/whatsappLink"));
+const EmailLink = lazy(() => import("../social-media/email-link/emailLink"));
+const TechnicalCard = lazy(() => import("../technical-card/TechnicalCard"));
 import projectsDataEnglish from "../../assets/data/englishProjects.json";
 import projectDataespañol from "../../assets/data/españolProjects.json";
 
@@ -47,11 +50,11 @@ function MainContent({ className }) {
     useEffect(() => {
         if (!mobileMode) {
             // Iniciar las animaciones después de que termine el typewriter
-            const timer1 = setTimeout(() => setShowAbout(true), 2000); // Primero "Sobre mí"
-            const timer2 = setTimeout(() => setShowProjects(true), 2500); // Luego "Proyectos"
-            const timer3 = setTimeout(() => setShowSkills(true), 3000); // Luego "Skills"
-            const timer4 = setTimeout(() => setShowContact(true), 3500); // Luego "Contacto"
-            const timer5 = setTimeout(() => setShowFooter(true), 4000); // Finalmente el footer
+            const timer1 = setTimeout(() => setShowAbout(true), 1000); // Primero "Sobre mí"
+            const timer2 = setTimeout(() => setShowProjects(true), 2000); // Luego "Proyectos"
+            const timer3 = setTimeout(() => setShowSkills(true), 2500); // Luego "Skills"
+            const timer4 = setTimeout(() => setShowContact(true), 3000); // Luego "Contacto"
+            const timer5 = setTimeout(() => setShowFooter(true), 3500); // Finalmente el footer
 
             return () => {
                 clearTimeout(timer1);
@@ -92,17 +95,21 @@ function MainContent({ className }) {
                             ? "Desde que inicié mi trayectoria en el desarrollo web, primero de manera autodidacta y luego a través de varios bootcamps, no he dejado de trabajar en diversos proyectos. A continuación, te muestro algunos de los más destacados. Si tienes curiosidad por ver más, te invito a visitar mi perfil en GitHub."
                             : "Since I began my journey in web development, first self-taught and then through several bootcamps, I haven't stopped working on various projects. Below, I showcase some of the most notable ones. If you're curious to see more, I invite you to visit my GitHub profile."}
                     </p>
-                    <TechnicalCard projects={projects} />
+                    <Suspense fallback={<div style={{padding: '20px', textAlign: 'center'}}>Cargando proyectos...</div>}>
+                        <TechnicalCard projects={projects} />
+                    </Suspense>
                 </section>
 
                 <section className={`section col-md-10  mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showSkills ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="skills">
                     <h2 className="mb-4">{isEspanol ? "Habilidades" : "Skills"}</h2>
-                    <h6>{isEspanol ? "- Lenguajes de programación." : "Programming Languages"}</h6>
-                    <IconsSkills skills="languages" />
-                    <h6>{isEspanol ? "- Librerías y frameworks." : "- Libraries & Frameworks"}</h6>
-                    <IconsSkills skills="libraries" />
-                    <h6>{isEspanol ? "- Herramientas y plataformas." : "- Tools & Platforms"}</h6>
-                    <IconsSkills skills="tools" />
+                    <Suspense fallback={<div style={{padding: '10px', textAlign: 'center'}}>Cargando habilidades...</div>}>
+                        <h6>{isEspanol ? "- Lenguajes de programación." : "Programming Languages"}</h6>
+                        <IconsSkills skills="languages" />
+                        <h6>{isEspanol ? "- Librerías y frameworks." : "- Libraries & Frameworks"}</h6>
+                        <IconsSkills skills="libraries" />
+                        <h6>{isEspanol ? "- Herramientas y plataformas." : "- Tools & Platforms"}</h6>
+                        <IconsSkills skills="tools" />
+                    </Suspense>
                 </section>
 
                 <section className={`section col-md-10 mt-5 mb-5 ${focus === "contact" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showContact ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="contact">
@@ -113,8 +120,10 @@ function MainContent({ className }) {
                             : "You can contact me via email or social media. I am available to discuss new opportunities and collaborate on interesting projects."}
                     </p>
                     <div className="email d-flex flex-column">
-                        <EmailLink />
-                        <WhatsappLink />
+                        <Suspense fallback={<div style={{padding: '10px', textAlign: 'center'}}>Cargando contactos...</div>}>
+                            <EmailLink />
+                            <WhatsappLink />
+                        </Suspense>
                     </div>
                 </section>
 

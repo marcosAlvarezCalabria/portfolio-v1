@@ -8,7 +8,7 @@ function EmailLink() {
     <div className="social-media-link " >
     
         <a href="mailto:marcosAlvarezCalAbria@example.com">
-          <img className="img-link " src="/images/gmail.png" alt="Gmail" />
+          <img className="img-link " src="/images/webp/gmail.webp" alt="Gmail" />
         </a>
     
       <a className="invisible-link" href="mailto:marcosAlvarezCalabria@gmail.com">marcosAlvarezCalabria@gmail.com</a>

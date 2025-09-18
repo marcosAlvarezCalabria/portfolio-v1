@@ -8,7 +8,7 @@ function WhatsappLink() {
   return (
     <div>
       <a href={`https://wa.me/${phoneNumber}?text=${message}`} target="_blank" rel="noopener noreferrer">
-        <img className="img-link me-2 mt-2" src="/images/whatsapp.png" alt="WhatsApp" />
+        <img className="img-link me-2 mt-2" src="/images/webp/whatsapp.webp" alt="WhatsApp" />
       
       </a>
       <a className="invisible-link" href={`https://wa.me/${phoneNumber}?text=${message}`}>+34 687 41 45 74</a>

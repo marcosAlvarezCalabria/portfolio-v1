@@ -1,12 +1,22 @@
-import MainPage from "./pages/mainPage/main-page"
+import { lazy, Suspense } from 'react'
+
+const MainPage = lazy(() => import("./pages/mainPage/main-page"))
 
 function App() {
-
-
   return (
-    <>
-    <MainPage/>
-    </>
+    <Suspense fallback={
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        fontSize: '18px'
+      }}>
+        Cargando...
+      </div>
+    }>
+      <MainPage/>
+    </Suspense>
   )
 }
 

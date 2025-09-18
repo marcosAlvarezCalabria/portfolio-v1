@@ -19,6 +19,7 @@ function App() {
         gtag('config', '${gaId}');
       `;
       document.head.appendChild(script2);
+      //console.log(`el`+ gaId)
     }
   }, []);
 

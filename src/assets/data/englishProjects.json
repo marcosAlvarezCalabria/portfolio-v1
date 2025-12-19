@@ -4,19 +4,45 @@
             "name": "CineHub",
             "image": "../../../public/images/webp/cineHubImage.webp",
             "resume": "My final project at IronHack (Bootcamp) is a platform developed with React that allows users to explore movies, vote for their favorites, share opinions, and also shows the nearest cinemas. It features a smooth and attractive user interface, a robust backend REST API based on ExpressJS, MongoDB, and Mongoose, as well as authentication and authorization functions to ensure user security.",
-            "technologies": ["JavaScript", "MongoDb", "Dockers", "React", "Node", "Express"],
+            "technologies": [
+                "JavaScript",
+                "MongoDb",
+                "Dockers",
+                "React",
+                "Node",
+                "Express"
+            ],
             "link": "https://cine-hub.fly.dev/",
             "git": "https://github.com/marcosAlvarezCalabria/cine-hub-repo.git",
-            "video":"https://youtu.be/0vs-VgoezPc"
+            "video": "https://youtu.be/0vs-VgoezPc"
         },
         {
             "name": "ConoXchange",
             "image": "../../../public/images/webp/conoXchangeImage.webp",
             "resume": "ConoXchange is a web platform where users can share their skills and knowledge, interact with each other, and organize meetups to learn and teach. Users can register and manage their profiles, search for and offer skills, and plan meetings. The application includes features for registration, login, and logout with encrypted passwords, and provides authorization for authenticated users to create, read, update, and delete skills and meetups. ConoXchange facilitates knowledge exchange and strengthens the community by allowing users to connect and learn from each other in a secure and collaborative environment",
-            "technologies": ["JavaScript", "Handlebars", "MongoDb", "Node", "Express"],
+            "technologies": [
+                "JavaScript",
+                "Handlebars",
+                "MongoDb",
+                "Node",
+                "Express"
+            ],
             "link": "https://conoxchange.fly.dev",
             "git": "https://github.com/marcosAlvarezCalabria/conoXchange.git",
-            "video":"https://youtu.be/QlVYOfzwYF4"
+            "video": "https://youtu.be/QlVYOfzwYF4"
+        },
+        {
+            "name": "Peru Inkas Travel",
+            "image": "../../../public/images/webp/peruInkasTravel.png",
+            "resume": "A modern travel agency website dedicated to exploring Cusco and the Peruvian Andes, showcasing tour packages like Machu Picchu and Rainbow Mountain with Google Maps integration.",
+            "technologies": [
+                "JavaScript",
+                "Tailwind CSS",
+                "Google Maps API"
+            ],
+            "link": "https://peruinkastravel.netlify.app/",
+            "git": "",
+            "video": "https://youtu.be/GQmT85SFWLo"
         }
     ]
 }

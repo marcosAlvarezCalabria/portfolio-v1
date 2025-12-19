@@ -127,6 +127,7 @@ function MainContent({ className }) {
                     </div>
                 </section>
 
+                <div style={{ height: '100px' }}></div>
                 <footer className={`col-md-7 text-center mt-5 ${!mobileMode ? (showFooter ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`}>
                     {isEspanol
                         ? <span>

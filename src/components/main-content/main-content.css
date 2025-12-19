@@ -25,10 +25,12 @@
     z-index: 10;
     position: relative;
 }
-.main-content{
+
+.main-content {
     margin-top: 100px !important;
 }
-.relleno1{
+
+.relleno1 {
     margin: 1000px;
 
 }
@@ -46,40 +48,47 @@
 }
 
 @media(max-width: 768px) {
+
     /* Add solid backgrounds for mobile to show particles behind */
     .main-content {
-        background-color: rgba(17, 24, 39, 0.75) !important; /* More transparent to show particles */
+        background-color: rgba(17, 24, 39, 0.75) !important;
+        /* More transparent to show particles */
         position: relative;
         z-index: 2;
     }
-    
-    .light .main-content, 
+
+    .light .main-content,
     .main-content.light {
-        background-color: rgba(241, 245, 249, 0.75) !important; /* More transparent to show particles */
+        background-color: rgba(241, 245, 249, 0.75) !important;
+        /* More transparent to show particles */
     }
-    
+
     .section {
-        background-color: rgba(31, 41, 55, 0.90) !important; /* More transparent to allow particles */
+        background-color: rgba(31, 41, 55, 0.90) !important;
+        /* More transparent to allow particles */
         backdrop-filter: blur(15px);
         border: 1px solid rgba(55, 65, 81, 0.5);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         position: relative;
         z-index: 3;
     }
-    
+
     .light .section,
     .section.light {
-        background-color: rgba(255, 255, 255, 0.90) !important; /* More transparent to allow particles */
+        background-color: rgba(255, 255, 255, 0.90) !important;
+        /* More transparent to allow particles */
         border: 1px solid rgba(209, 213, 219, 0.5);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        color: #1f2937 !important; /* Ensure dark text */
+        color: #1f2937 !important;
+        /* Ensure dark text */
         z-index: 3;
     }
-    
+
     .div-content {
         justify-content: center !important;
     }
-    .section{
+
+    .section {
         margin-right: 1px;
     }
 }
@@ -91,35 +100,42 @@
 }
 
 .light {
-    background-color: #f1f5f9;    /* Gris claro profesional */
-    color: #1f2937;               /* Gris oscuro para buen contraste */
+    background-color: #f1f5f9;
+    /* Gris claro profesional */
+    color: #1f2937;
+    /* Gris oscuro para buen contraste */
 }
-footer{
+
+
+footer {
     font-size: 10px;
     color: darkgrey;
+    margin-bottom: 20px;
 }
 
 /* Desktop entrance animations for sections */
 @media (min-width: 769px) {
-  /* Initial hidden state */
-  .hidden-bottom {
-    opacity: 0;
-    transform: translateY(50px);
-  }
 
-  /* Fade in up animation */
-  .animate-fade-in-up {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 1s ease-out;
-  }
-
-  /* Make sure mobile doesn't inherit these styles */
-  @media (max-width: 768px) {
-    .hidden-bottom,
-    .animate-fade-in-up {
-      opacity: 1 !important;
-      transform: none !important;
+    /* Initial hidden state */
+    .hidden-bottom {
+        opacity: 0;
+        transform: translateY(50px);
     }
-  }
+
+    /* Fade in up animation */
+    .animate-fade-in-up {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1s ease-out;
+    }
+
+    /* Make sure mobile doesn't inherit these styles */
+    @media (max-width: 768px) {
+
+        .hidden-bottom,
+        .animate-fade-in-up {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
 }

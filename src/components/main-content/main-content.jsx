@@ -84,8 +84,8 @@ function MainContent({ className }) {
                             : "Hello!! Welcome to my portfolio. Currently, I am dedicated to expanding my knowledge in web development technologies, although I am open to exploring any type of technology. Perseverance is my main virtue, and it is reflected in my work, where I always strive to give my best. I am excited about future opportunities and challenging projects that allow me to continue improving and offering innovative solutions."}
                     </p>
                     {isEspanol
-                        ? <Link href="https://drive.google.com/file/d/1RNP-jjtUWx_aBX_1n5Dim_bxAICpcT2v/view?usp=drive_link">Curriculum Vitae</Link>
-                        : <Link href="https://drive.google.com/file/d/1RNP-jjtUWx_aBX_1n5Dim_bxAICpcT2v/view?usp=drive_link">View Full Resume</Link>}
+                        ? <Link href="https://docs.google.com/document/d/189uk4yqbYS8wLcureKVLpUVNW-_9vJEBTdOgl2GIbSU/edit?usp=drive_link">Curriculum Vitae</Link>
+                        : <Link href="https://docs.google.com/document/d/189uk4yqbYS8wLcureKVLpUVNW-_9vJEBTdOgl2GIbSU/edit?usp=drive_link">View Full Resume</Link>}
                 </section>
 
                 <section className={`section mt-5 d-flex flex-column col-md-10 ${focus === "projects" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showProjects ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="projects">

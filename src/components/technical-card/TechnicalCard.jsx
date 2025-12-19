@@ -11,6 +11,20 @@ const TechnicalCard = ({ projects }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
     const { mode } = useContext(ModeContext);
     const { language } = useContext(LanguageContext);
+    const cardRefs = React.useRef([]);
+
+    // Scroll al centro cuando se expande una tarjeta
+    React.useEffect(() => {
+        if (expandedId !== null && cardRefs.current[expandedId]) {
+            // Pequeño delay para permitir que la animación de framer-motion inicie
+            setTimeout(() => {
+                cardRefs.current[expandedId].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 300);
+        }
+    }, [expandedId]);
 
     const toggleExpand = (index) => {
         setExpandedId(expandedId === index ? null : index);
@@ -33,6 +47,7 @@ const TechnicalCard = ({ projects }) => {
             {projects.map((project, index) => (
                 <motion.div
                     key={index}
+                    ref={el => cardRefs.current[index] = el}
                     className={`tech-card ${mode === 'dark' ? 'tech-card-dark' : 'tech-card-light'}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -66,7 +81,7 @@ const TechnicalCard = ({ projects }) => {
                                 <div className="video-section">
                                     <VideoPlayer url={project.video} height={window.innerWidth <= 1024 ? "120px" : "200px"} />
                                 </div>
-                                
+
                                 <div className="content-section">
                                     <div className="code-block">
                                         <span className="comment">// Project description</span>
@@ -76,18 +91,18 @@ const TechnicalCard = ({ projects }) => {
                                                 : project.resume}
                                         </p>
                                         {isMobile && project.resume.length > 120 && (
-                                            <button 
+                                            <button
                                                 className="btn-expand-description"
                                                 onClick={() => toggleTextExpand(index)}
                                             >
-                                                {textExpanded[index] 
+                                                {textExpanded[index]
                                                     ? (language === 'español' ? 'Ver menos' : 'Show less')
                                                     : (language === 'español' ? 'Leer más' : 'Read more')
                                                 }
                                             </button>
                                         )}
                                     </div>
-                                    
+
                                     <div className="project-links">
                                         <span className="comment">// Quick access</span>
                                         <div className="links">

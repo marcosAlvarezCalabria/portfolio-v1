@@ -84,8 +84,8 @@ function MainContent({ className }) {
                             : "Hello!! Welcome to my portfolio. Currently, I am dedicated to expanding my knowledge in web development technologies, although I am open to exploring any type of technology. Perseverance is my main virtue, and it is reflected in my work, where I always strive to give my best. I am excited about future opportunities and challenging projects that allow me to continue improving and offering innovative solutions."}
                     </p>
                     {isEspanol
-                        ? <Link href="https://docs.google.com/document/d/189uk4yqbYS8wLcureKVLpUVNW-_9vJEBTdOgl2GIbSU/edit?usp=drive_link">Curriculum Vitae</Link>
-                        : <Link href="https://docs.google.com/document/d/189uk4yqbYS8wLcureKVLpUVNW-_9vJEBTdOgl2GIbSU/edit?usp=drive_link">View Full Resume</Link>}
+                        ? <Link href="https://drive.google.com/file/d/1cXay5tqPULuw5wr4k69LCv8oJpJovpCJ/view?usp=drive_link">Curriculum Vitae</Link>
+                        : <Link href="https://drive.google.com/file/d/1cXay5tqPULuw5wr4k69LCv8oJpJovpCJ/view?usp=drive_link">View Full Resume</Link>}
                 </section>
 
                 <section className={`section mt-5 d-flex flex-column col-md-10 ${focus === "projects" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showProjects ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="projects">
@@ -95,14 +95,14 @@ function MainContent({ className }) {
                             ? "Desde que inicié mi trayectoria en el desarrollo web, primero de manera autodidacta y luego a través de varios bootcamps, no he dejado de trabajar en diversos proyectos. A continuación, te muestro algunos de los más destacados. Si tienes curiosidad por ver más, te invito a visitar mi perfil en GitHub."
                             : "Since I began my journey in web development, first self-taught and then through several bootcamps, I haven't stopped working on various projects. Below, I showcase some of the most notable ones. If you're curious to see more, I invite you to visit my GitHub profile."}
                     </p>
-                    <Suspense fallback={<div style={{padding: '20px', textAlign: 'center'}}>Cargando proyectos...</div>}>
+                    <Suspense fallback={<div style={{ padding: '20px', textAlign: 'center' }}>Cargando proyectos...</div>}>
                         <TechnicalCard projects={projects} />
                     </Suspense>
                 </section>
 
                 <section className={`section col-md-10  mt-5 ${focus === "skills" ? (mode === "dark" ? "focus-dark" : "focus-light") : ""} ${!mobileMode ? (showSkills ? 'animate-fade-in-up' : 'hidden-bottom') : ''}`} id="skills">
                     <h2 className="mb-4">{isEspanol ? "Habilidades" : "Skills"}</h2>
-                    <Suspense fallback={<div style={{padding: '10px', textAlign: 'center'}}>Cargando habilidades...</div>}>
+                    <Suspense fallback={<div style={{ padding: '10px', textAlign: 'center' }}>Cargando habilidades...</div>}>
                         <h6>{isEspanol ? "- Lenguajes de programación." : "Programming Languages"}</h6>
                         <IconsSkills skills="languages" />
                         <h6>{isEspanol ? "- Librerías y frameworks." : "- Libraries & Frameworks"}</h6>
@@ -120,7 +120,7 @@ function MainContent({ className }) {
                             : "You can contact me via email or social media. I am available to discuss new opportunities and collaborate on interesting projects."}
                     </p>
                     <div className="email d-flex flex-column">
-                        <Suspense fallback={<div style={{padding: '10px', textAlign: 'center'}}>Cargando contactos...</div>}>
+                        <Suspense fallback={<div style={{ padding: '10px', textAlign: 'center' }}>Cargando contactos...</div>}>
                             <EmailLink />
                             <WhatsappLink />
                         </Suspense>
@@ -131,10 +131,10 @@ function MainContent({ className }) {
                     {isEspanol
                         ? <span>
                             Diseñado de manera libre en <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> y codificado en <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> por su servidor. Construido con Vite + React y <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> CSS. Todo el texto está en la tipografía Inter.
-                          </span>
+                        </span>
                         : <span>
                             Loosely designed in <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a> and coded in <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> by yours truly. Built with Vite + React and <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> CSS. All text is set in the Inter typeface.
-                          </span>}
+                        </span>}
                 </footer>
             </div>
         </div>

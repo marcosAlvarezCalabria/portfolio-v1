@@ -6,85 +6,41 @@ import './navbar.css';
 function NavbarComponent() {
     const { mode, toggleMode } = useContext(ModeContext);
     const { language, toggleLanguage } = useContext(LanguageContext);
-    const [navbarColor, setNavbarColor] = useState(mode === "dark" ? "#111827" : "#f1f5f9");
-    const [sunColor, setSunColor] = useState("white");
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [showLightBeam, setShowLightBeam] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            setSunColor("white");
-
-            // Control light beam visibility
-            setShowLightBeam(scrollPosition === 0);
-
-            if (scrollPosition <= 90 || screenWidth < 480) {
-                setNavbarColor(mode === "dark" ? "#111827" : "#f1f5f9");
-            } else {
-                setNavbarColor("transparent");
-            }
+            // Control light beam visibility on scroll
+            setShowLightBeam(window.scrollY === 0);
         };
-
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth);
-        };
-
         window.addEventListener("scroll", handleScroll);
-        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [screenWidth, mode]);
+    const handleMode = () => toggleMode();
+    const handleLanguage = () => toggleLanguage();
 
-    useEffect(() => {
-        setNavbarColor(mode === "dark" ? "#111827" : "#f1f5f9");
-        
-        // Update particles color based on mode for mobile
-        if (screenWidth < 768) {
-            const body = document.body;
-            if (body) {
-                if (mode === "light") {
-                    body.classList.add('light-particles');
-                    body.classList.remove('dark-particles');
-                } else {
-                    body.classList.add('dark-particles');
-                    body.classList.remove('light-particles');
-                }
-            }
-        }
-    }, [mode, screenWidth]);
-
-    const handleMode = () => {
-        toggleMode();
-    };
-
-    const handleLanguage = () => {
-        toggleLanguage();
-    };
-
-    const languageSelected = language.slice(0, 2).toUpperCase();
-   
     return (
-        <nav style={{ 
-            backgroundColor: navbarColor,
-            maxHeight: "55px",
-            boxShadow: "none" }}
-            className="navbar container-fluid sticky-top fixed-top">
+        <nav className="navbar glass-panel container-fluid sticky-top fixed-top"
+            style={{
+                maxHeight: "60px",
+                borderBottom: "1px solid var(--surface-border)",
+                transition: "all 0.3s ease"
+            }}>
             <div className="d-flex flex-column justify-content-start">
                 <div className={`simple-buttons-container ${showLightBeam ? 'show-light-beam' : ''}`}>
-                    <button 
+                    <button
                         className={`simple-btn theme-btn ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}
                         onClick={handleMode}
+                        aria-label="Toggle Theme"
                     >
                         <i className={`fa ${mode === 'light' ? 'fa-moon-o' : 'fa-sun-o'}`}></i>
                     </button>
-                    
-                    <button 
+
+                    <button
                         className={`simple-btn language-btn ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}
                         onClick={handleLanguage}
+                        aria-label="Toggle Language"
                     >
                         {language === 'english' ? 'EN' : 'ES'}
                     </button>

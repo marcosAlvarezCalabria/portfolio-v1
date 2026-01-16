@@ -48,7 +48,7 @@ const TechnicalCard = ({ projects }) => {
                 <motion.div
                     key={index}
                     ref={el => cardRefs.current[index] = el}
-                    className={`tech-card ${mode === 'dark' ? 'tech-card-dark' : 'tech-card-light'}`}
+                    className="tech-card"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}

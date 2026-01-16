@@ -7,48 +7,39 @@
 }
 
 /* Simple Button Styles */
+/* Simple Button Styles */
 .simple-btn {
   background: transparent;
-  border: 1px solid;
-  border-radius: 6px;
+  border: 1px solid var(--border, #334155);
+  border-radius: 8px;
+  /* Slightly more rounded */
   padding: 4px 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 12px;
-  font-weight: 500;
-  min-width: 28px;
-  height: 28px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  /* Readability */
+  font-family: var(--font-display);
+  font-weight: 600;
+  min-width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text-secondary);
 }
 
-/* Light theme buttons */
-.simple-btn.light-theme {
-  border-color: #374151;
-  color: #374151;
+.simple-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
 }
 
-.simple-btn.light-theme:hover {
-  background-color: #374151;
-  color: #ffffff;
-  transform: scale(1.05);
-}
-
-/* Dark theme buttons */
-.simple-btn.dark-theme {
-  border-color: #ffffff;
-  color: #ffffff;
-}
-
-.simple-btn.dark-theme:hover {
-  background-color: #ffffff;
-  color: #1f2937;
-  transform: scale(1.05);
-}
+/* Theme specific overrides if needed, but variables handle most */
 
 /* Mobile responsive adjustments */
 @media (max-width: 767px) {
+
   /* Static particle dots - Dark mode */
   body.dark-particles::before {
     content: none;
@@ -139,6 +130,7 @@
 
   /* Smaller screens optimization */
   @media (max-width: 480px) {
+
     body.dark-particles::before,
     body.light-particles::before {
       width: 45px;
@@ -158,6 +150,7 @@
 
   /* Very small screens optimization */
   @media (max-width: 360px) {
+
     body.dark-particles::before,
     body.light-particles::before {
       width: 35px;
@@ -166,13 +159,13 @@
       opacity: 0.4;
     }
   }
-  
+
   .simple-buttons-container {
     gap: 0.5rem;
     margin-left: 10px;
     position: relative;
   }
-  
+
   /* Light beam effect under buttons area only for mobile - only when at top */
   .simple-buttons-container.show-light-beam::after {
     content: '';
@@ -181,18 +174,18 @@
     left: -10px;
     right: -10px;
     height: 2px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(59, 130, 246, 0.4) 30%, 
-      rgba(59, 130, 246, 0.8) 50%, 
-      rgba(59, 130, 246, 0.4) 70%, 
-      transparent 100%);
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(59, 130, 246, 0.4) 30%,
+        rgba(59, 130, 246, 0.8) 50%,
+        rgba(59, 130, 246, 0.4) 70%,
+        transparent 100%);
     border-radius: 1px;
     /* animation: lightBeam 2.5s ease-in-out infinite; */
     opacity: 0.7;
     transition: opacity 0.3s ease;
   }
-  
+
   .simple-btn {
     padding: 3px 6px;
     font-size: 10px;
@@ -276,11 +269,11 @@
 }
 
 /* Theme switch button colors */
-.theme-switch input:checked + .ios-slider:before {
+.theme-switch input:checked+.ios-slider:before {
   background-color: #666;
 }
 
-.language-switch input:checked + .ios-slider:before {
+.language-switch input:checked+.ios-slider:before {
   background-color: #196acc;
 }
 
@@ -289,23 +282,23 @@
   background-color: #e5e7eb;
 }
 
-.ios-switch.dark-theme.theme-switch input:checked + .ios-slider:before {
+.ios-switch.dark-theme.theme-switch input:checked+.ios-slider:before {
   background-color: #d7d1c6;
 }
 
-.ios-switch.dark-theme.language-switch input:checked + .ios-slider:before {
-  background-color:  #196acc;
+.ios-switch.dark-theme.language-switch input:checked+.ios-slider:before {
+  background-color: #196acc;
 }
 
-.ios-switch input:checked + .ios-slider {
+.ios-switch input:checked+.ios-slider {
   background-color: #2196F3;
 }
 
-.ios-switch input:focus + .ios-slider {
+.ios-switch input:focus+.ios-slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-.ios-switch input:checked + .ios-slider:before {
+.ios-switch input:checked+.ios-slider:before {
   transform: translateX(26px);
 }
 
@@ -316,7 +309,7 @@
   transition: color 0.4s;
 }
 
-.ios-switch input:checked + .ios-slider .switch-icon {
+.ios-switch input:checked+.ios-slider .switch-icon {
   color: #fff;
 }
 
@@ -328,25 +321,25 @@
   transition: color 0.4s;
 }
 
-.ios-switch input:checked + .ios-slider .switch-text {
+.ios-switch input:checked+.ios-slider .switch-text {
   color: #fff;
 }
 
 /* Theme Switch Colors - Matching portfolio accent */
-.theme-switch input:checked + .ios-slider {
+.theme-switch input:checked+.ios-slider {
   background-color: var(--accent, #3b82f6);
 }
 
-.theme-switch input:focus + .ios-slider {
+.theme-switch input:focus+.ios-slider {
   box-shadow: 0 0 1px var(--accent, #3b82f6);
 }
 
 /* Language Switch Colors - Matching portfolio hover */
-.language-switch input:checked + .ios-slider {
+.language-switch input:checked+.ios-slider {
   background-color: var(--hover, #475569);
 }
 
-.language-switch input:focus + .ios-slider {
+.language-switch input:focus+.ios-slider {
   box-shadow: 0 0 1px var(--hover, #475569);
 }
 
@@ -357,8 +350,8 @@
   color: #1f2937;
 }
 
-.ios-switch input:checked + .ios-slider .switch-icon,
-.ios-switch input:checked + .ios-slider .switch-text {
+.ios-switch input:checked+.ios-slider .switch-icon,
+.ios-switch input:checked+.ios-slider .switch-text {
   color: #ffffff;
 }
 

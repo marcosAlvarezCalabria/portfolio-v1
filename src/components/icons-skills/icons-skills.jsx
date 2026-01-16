@@ -1,22 +1,22 @@
 import "./icons-skills.css"
-import js from "../../../public/images/webp/js.webp"
-import html from "../../../public/images/webp/html.webp"
-import css from "../../../public/images/webp/css3.webp"
-import node from "../../../public/images/webp/node.webp"
-import handlebars from "../../../public/images/webp/handlebars.webp"
-import mongo from "../../../public/images/webp/mongo.webp"
-import react from "../../../public/images/webp/react.webp"
-import express from "../../../public/images/webp/expressjs.webp"
-import dockers from "../../../public/images/webp/dockers.webp"
-import git from "../../../public/images/webp/git.webp"
+import js from "/images/webp/js.webp"
+import html from "/images/webp/html.webp"
+import css from "/images/webp/css3.webp"
+import node from "/images/webp/node.webp"
+import handlebars from "/images/webp/handlebars.webp"
+import mongo from "/images/webp/mongo.webp"
+import react from "/images/webp/react.webp"
+import express from "/images/webp/expressjs.webp"
+import dockers from "/images/webp/dockers.webp"
+import git from "/images/webp/git.webp"
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 
 
-function IconsSkills({skills}){
+function IconsSkills({ skills }) {
 
 
-    const renderIcons=() => {
+    const renderIcons = () => {
         if (skills === 'languages') {
             return (
                 <>
@@ -54,7 +54,7 @@ function IconsSkills({skills}){
         </div>
     );
 
-    }  
+}
 
-   
+
 export default IconsSkills;

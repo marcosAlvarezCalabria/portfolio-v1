@@ -80,8 +80,8 @@ function MainContent({ className }) {
                     <h2>{isEspanol ? "Sobre mí" : "About Me"}</h2>
                     <p>
                         {isEspanol
-                            ? "Hola !!, Bienvenido a mi portfolio. Actualmente, me dedico a expandir mis conocimientos en tecnologías relacionadas con el desarrollo web, aunque estoy abierto a explorar cualquier tipo de tecnología. La perseverancia es mi principal virtud, y se refleja en mi trabajo, donde siempre me esfuerzo al máximo. Estoy entusiasmado por las oportunidades futuras y los proyectos desafiantes que me permitan seguir mejorando y ofreciendo soluciones innovadoras."
-                            : "Hello!! Welcome to my portfolio. Currently, I am dedicated to expanding my knowledge in web development technologies, although I am open to exploring any type of technology. Perseverance is my main virtue, and it is reflected in my work, where I always strive to give my best. I am excited about future opportunities and challenging projects that allow me to continue improving and offering innovative solutions."}
+                            ? "Más allá del código, mi verdadero valor reside en la ética profesional. Entiendo el desarrollo no solo como aprender tecnologías, sino como un compromiso de responsabilidad: cumplir plazos, apoyar al equipo y aportar el 100% sin que nadie tenga que pedírmelo. Busco crecer en un entorno que valore la calidad humana y el esfuerzo tanto como la excelencia técnica."
+                            : "Beyond code, my true value lies in professional ethics. I see development not just as mastering tech, but as a commitment to responsibility: meeting deadlines, supporting the team, and giving 100% by default. I am looking to grow in an environment that values human quality and effort as much as technical excellence."}
                     </p>
                     {isEspanol
                         ? <Link href="https://drive.google.com/file/d/1cXay5tqPULuw5wr4k69LCv8oJpJovpCJ/view?usp=drive_link">Curriculum Vitae</Link>

@@ -20,26 +20,26 @@ function IconsSkills({ skills }) {
         if (skills === 'languages') {
             return (
                 <>
-                    <img className="image" src={html} alt="HTML" />
-                    <img className="image" src={css} alt="CSS" />
-                    <img className="image" src={js} alt="JavaScript" />
+                    <img className="image" src={html} alt="HTML" loading="lazy" />
+                    <img className="image" src={css} alt="CSS" loading="lazy" />
+                    <img className="image" src={js} alt="JavaScript" loading="lazy" />
                 </>
             );
         } else if (skills === 'libraries') {
             return (
                 <>
-                    <img className="image" src={handlebars} alt="Handlebars" />
-                    <img className="image" src={react} alt="React" />
-                    <img className="image" src={node} alt="React" />
+                    <img className="image" src={handlebars} alt="Handlebars" loading="lazy" />
+                    <img className="image" src={react} alt="React" loading="lazy" />
+                    <img className="image" src={node} alt="React" loading="lazy" />
                 </>
             );
         } else if (skills === 'tools') {
             return (
                 <>
-                    <img className="image" src={mongo} alt="MongoDB" />
-                    <img className="image" src={express} alt="Express" />
-                    <img className="image" src={dockers} alt="Dockers" />
-                    <img className="image" src={git} alt="Git" />
+                    <img className="image" src={mongo} alt="MongoDB" loading="lazy" />
+                    <img className="image" src={express} alt="Express" loading="lazy" />
+                    <img className="image" src={dockers} alt="Dockers" loading="lazy" />
+                    <img className="image" src={git} alt="Git" loading="lazy" />
                     <GitHubIcon className="image github-icon" style={{ fontSize: 60, color: '#333' }} />
                 </>
             );

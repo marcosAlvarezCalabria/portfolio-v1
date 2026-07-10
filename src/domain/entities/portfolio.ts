@@ -34,6 +34,7 @@ export type SkillItem = {
   iconUrl?: string;
   iconSvgPaths?: string[];
   rasterIconUrl?: string;
+  monochromeRaster?: boolean;
 };
 
 export type ContactItem = {

@@ -139,6 +139,13 @@ export const portfolioContent: PortfolioContent = {
           { label: 'Vitest', iconUrl: 'https://cdn.simpleicons.org/vitest/000000' },
           { label: 'Automation flows', iconSvgPaths: ['M6 8h12', 'M6 12h8', 'M6 16h12', 'M16 10l2 2-2 2'] }
         ]
+      },
+      {
+        title: 'Agent systems',
+        skills: [
+          { label: 'OpenClaw', rasterIconUrl: 'https://openclaw.ai/apple-touch-icon.png', monochromeRaster: true },
+          { label: 'Hermes Agent', rasterIconUrl: 'https://hermes-agent.nousresearch.com/img/desktop/badge.webp', monochromeRaster: true }
+        ]
       }
     ]
   },

@@ -5,8 +5,13 @@ export function useGridPointer() {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const setGridPointer = (x: number, y: number) => {
+      const offsetX = (x / window.innerWidth - 0.5) * 2;
+      const offsetY = (y / window.innerHeight - 0.5) * 2;
+
       document.body.style.setProperty('--grid-pointer-x', `${x}px`);
       document.body.style.setProperty('--grid-pointer-y', `${y}px`);
+      document.body.style.setProperty('--grid-depth-x', offsetX.toFixed(3));
+      document.body.style.setProperty('--grid-depth-y', offsetY.toFixed(3));
     };
 
     const setDefault = () => {

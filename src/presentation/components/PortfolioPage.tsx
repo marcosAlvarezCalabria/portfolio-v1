@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import type { ContactItem, Project, SkillItem } from '../../domain/entities/portfolio';
-import { useGridPointer } from '../hooks/use-grid-pointer';
+import { GridMorphField } from './GridMorphField';
 import { usePortfolioPage } from '../hooks/use-portfolio-page';
+import { useScrollReveal } from '../hooks/use-scroll-reveal';
 import portraitImage from '../assets/profile-marcos.png';
 import './portfolio-page.css';
 
@@ -72,7 +73,16 @@ function SkillLogo({ skill }: { skill: SkillItem }) {
   }
 
   if (skill.rasterIconUrl) {
-    return <img className="tech-logo-raster" src={skill.rasterIconUrl} alt="" loading="lazy" decoding="async" referrerPolicy="no-referrer" />;
+    return (
+      <img
+        className={`tech-logo-raster${skill.monochromeRaster ? ' tech-logo-raster-monochrome' : ''}`}
+        src={skill.rasterIconUrl}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
+      />
+    );
   }
 
   if (skill.iconSvgPaths) {
@@ -123,10 +133,11 @@ export function PortfolioPage() {
   const content = usePortfolioPage();
   const [openContact, setOpenContact] = useState<string | null>(null);
 
-  useGridPointer();
+  useScrollReveal();
 
   return (
     <div className="page-shell">
+      <GridMorphField />
       <header className="site-nav">
         <div className="nav-inner">
           <a className="brand-mark" href="#top">Marcos Alvarez</a>
@@ -193,8 +204,15 @@ export function PortfolioPage() {
               <p className="section-copy">{content.projects.copy}</p>
             </div>
             <div className="project-list">
-              {content.projects.items.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
+              {content.projects.items.map((project, index) => (
+                <div
+                  key={project.slug}
+                  data-reveal={index % 2 === 0 ? 'left' : 'right'}
+                  className="reveal-card"
+                  style={{ transitionDelay: `${index * 90}ms` }}
+                >
+                  <ProjectCard project={project} />
+                </div>
               ))}
             </div>
           </div>
@@ -210,20 +228,27 @@ export function PortfolioPage() {
               <p className="section-copy">{content.skills.copy}</p>
             </div>
             <div className="group-grid">
-              {content.skills.groups.map((group) => (
-                <article key={group.title} className="skill-card">
-                  <h3>{group.title}</h3>
-                  <div className="tech-list">
-                    {group.skills.map((skill) => (
-                      <span key={skill.label} className="tech-pill">
-                        <span className="tech-logo" aria-hidden="true">
-                          <SkillLogo skill={skill} />
+              {content.skills.groups.map((group, index) => (
+                <div
+                  key={group.title}
+                  data-reveal={index % 2 === 0 ? 'left' : 'right'}
+                  className="reveal-card"
+                  style={{ transitionDelay: `${index * 110}ms` }}
+                >
+                  <article className="skill-card">
+                    <h3>{group.title}</h3>
+                    <div className="tech-list">
+                      {group.skills.map((skill) => (
+                        <span key={skill.label} className="tech-pill">
+                          <span className="tech-logo" aria-hidden="true">
+                            <SkillLogo skill={skill} />
+                          </span>
+                          <span className="tech-label">{skill.label}</span>
                         </span>
-                        <span className="tech-label">{skill.label}</span>
-                      </span>
-                    ))}
-                  </div>
-                </article>
+                      ))}
+                    </div>
+                  </article>
+                </div>
               ))}
             </div>
           </div>
@@ -255,13 +280,19 @@ export function PortfolioPage() {
               <p className="section-copy">{content.contact.copy}</p>
             </div>
             <div className="contact-grid">
-              {content.contact.items.map((item) => (
-                <ContactSwitch
+              {content.contact.items.map((item, index) => (
+                <div
                   key={item.slug}
-                  item={item}
-                  isOpen={openContact === item.slug}
-                  onToggle={() => setOpenContact((current) => (current === item.slug ? null : item.slug))}
-                />
+                  data-reveal={index % 2 === 0 ? 'left' : 'right'}
+                  className="reveal-card"
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <ContactSwitch
+                    item={item}
+                    isOpen={openContact === item.slug}
+                    onToggle={() => setOpenContact((current) => (current === item.slug ? null : item.slug))}
+                  />
+                </div>
               ))}
             </div>
           </div>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { ContactItem, Project, SkillItem } from '../../domain/entities/portfolio';
 import { useGridPointer } from '../hooks/use-grid-pointer';
 import { usePortfolioPage } from '../hooks/use-portfolio-page';
-import portraitImage from '../assets/profile-marcos.jpeg';
+import portraitImage from '../assets/profile-marcos.png';
 import './portfolio-page.css';
 
 function ProjectCard({ project }: { project: Project }) {

@@ -1,141 +1,144 @@
-/* main-content.css */
-.section {
-    padding: 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-right: 60px;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.focus-light {
-    transform: translateY(-15px) scale(1.08);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff !important;
-    border: 2px solid #3b82f6;
-    z-index: 10;
-    position: relative;
-}
-
-.focus-dark {
-    transform: translateY(-15px) scale(1.08);
-    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-    background-color: #1f2937 !important;
-    border: 2px solid #58a6ff;
-    z-index: 10;
-    position: relative;
-}
-
 .main-content {
-    margin-top: 100px !important;
+  position: relative;
+  z-index: 2;
+  margin-top: 112px !important;
+  padding-bottom: 5rem;
 }
 
-.relleno1 {
-    margin: 1000px;
-
+.section {
+  padding: 2.25rem;
+  margin: 0 0 1.5rem;
+  border: 1px solid rgba(214, 211, 207, 0.72);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-
-
-
-.background-blur {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(10px);
-    z-index: -1;
+.section:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--accent) 24%, var(--border));
 }
 
-@media(max-width: 768px) {
-
-    /* Add solid backgrounds for mobile to show particles behind */
-    .main-content {
-        background-color: rgba(17, 24, 39, 0.75) !important;
-        /* More transparent to show particles */
-        position: relative;
-        z-index: 2;
-    }
-
-    .light .main-content,
-    .main-content.light {
-        background-color: rgba(241, 245, 249, 0.75) !important;
-        /* More transparent to show particles */
-    }
-
-    .section {
-        background-color: rgba(31, 41, 55, 0.90) !important;
-        /* More transparent to allow particles */
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(55, 65, 81, 0.5);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        position: relative;
-        z-index: 3;
-    }
-
-    .light .section,
-    .section.light {
-        background-color: rgba(255, 255, 255, 0.90) !important;
-        /* More transparent to allow particles */
-        border: 1px solid rgba(209, 213, 219, 0.5);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        color: #1f2937 !important;
-        /* Ensure dark text */
-        z-index: 3;
-    }
-
-    .div-content {
-        justify-content: center !important;
-    }
-
-    .section {
-        margin-right: 1px;
-    }
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+  color: var(--accent-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-
-.dark {
-    background-color: #111827;
-    color: #ffffff;
+.section-kicker::before {
+  content: "";
+  width: 0.82rem;
+  height: 0.82rem;
+  border-radius: 999px;
+  background: var(--accent);
 }
 
-.light {
-    background-color: #f1f5f9;
-    /* Gris claro profesional */
-    color: #1f2937;
-    /* Gris oscuro para buen contraste */
+.section-heading {
+  max-width: 16ch;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.02;
 }
 
-
-footer {
-    font-size: 10px;
-    color: darkgrey;
-    margin-bottom: 20px;
+.section-copy {
+  margin-top: 1.25rem;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
-/* Desktop entrance animations for sections */
+.section-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.section-inline-link {
+  display: inline-flex;
+  margin-top: 1.35rem;
+  color: var(--fg);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--accent) 42%, white);
+}
+
+.section-inline-link:hover {
+  color: var(--accent-ink);
+}
+
+.skills-group + .skills-group {
+  margin-top: 1.55rem;
+}
+
+.skills-group h6 {
+  margin-bottom: 0.9rem;
+  color: var(--fg);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.contact-stack {
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.focus-light,
+.focus-dark {
+  transform: translateY(-6px);
+  border-color: color-mix(in oklab, var(--accent) 36%, var(--border));
+  box-shadow: 0 28px 64px rgba(39, 39, 39, 0.12);
+  background: rgba(255, 255, 255, 0.92) !important;
+  z-index: 10;
+  position: relative;
+}
+
+.footer-note {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 980px) {
+  .main-content {
+    margin-top: 1rem !important;
+    padding-inline: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1.5rem 1.2rem;
+    margin-right: 0;
+    border-radius: 24px;
+  }
+
+  .section-heading {
+    max-width: none;
+    font-size: 2rem;
+  }
+
+  .section-copy {
+    font-size: 0.96rem;
+  }
+}
+
 @media (min-width: 769px) {
+  .hidden-bottom {
+    opacity: 0;
+    transform: translateY(50px);
+  }
 
-    /* Initial hidden state */
-    .hidden-bottom {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-
-    /* Fade in up animation */
-    .animate-fade-in-up {
-        opacity: 1;
-        transform: translateY(0);
-        transition: all 1s ease-out;
-    }
-
-    /* Make sure mobile doesn't inherit these styles */
-    @media (max-width: 768px) {
-
-        .hidden-bottom,
-        .animate-fade-in-up {
-            opacity: 1 !important;
-            transform: none !important;
-        }
-    }
+  .animate-fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s ease-out;
+  }
 }

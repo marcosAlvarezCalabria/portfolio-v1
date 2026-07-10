@@ -1,29 +1,41 @@
 import React, { useContext, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import ModeContext from '../../contexts/mode.context';
 import LanguageContext from '../../contexts/language.context';
 import VideoPlayer from '../react-player/video-player';
 import './TechnicalCard.css';
 
 const TechnicalCard = ({ projects }) => {
-    const [expandedId, setExpandedId] = useState(null);
+    const [expandedId, setExpandedId] = useState(0);
     const [textExpanded, setTextExpanded] = useState({});
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
     const { mode } = useContext(ModeContext);
     const { language } = useContext(LanguageContext);
     const cardRefs = React.useRef([]);
 
-    // Scroll al centro cuando se expande una tarjeta
     React.useEffect(() => {
-        if (expandedId !== null && cardRefs.current[expandedId]) {
-            // Pequeño delay para permitir que la animación de framer-motion inicie
-            setTimeout(() => {
-                cardRefs.current[expandedId].scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-            }, 300);
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 1024);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    React.useEffect(() => {
+        if (expandedId === null || !cardRefs.current[expandedId]) {
+            return;
         }
+
+        setTimeout(() => {
+            cardRefs.current[expandedId].scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }, 220);
     }, [expandedId]);
 
     const toggleExpand = (index) => {
@@ -31,105 +43,120 @@ const TechnicalCard = ({ projects }) => {
     };
 
     const toggleTextExpand = (index) => {
-        setTextExpanded(prev => ({
+        setTextExpanded((prev) => ({
             ...prev,
             [index]: !prev[index]
         }));
     };
 
-    const truncateText = (text, maxLength = 120) => {
-        if (!text || text.length <= maxLength) return text;
-        return text.substring(0, maxLength) + '...';
+    const truncateText = (text, maxLength = 170) => {
+        if (!text || text.length <= maxLength) {
+            return text;
+        }
+
+        return `${text.substring(0, maxLength)}...`;
     };
+
+    const labels = language === 'español'
+        ? {
+            problem: 'Resumen',
+            stack: 'Stack',
+            links: 'Accesos',
+            details: 'Abrir detalle',
+            close: 'Cerrar detalle',
+            readMore: 'Leer mas',
+            showLess: 'Ver menos',
+            featured: ['Destacado', 'Arquitectura', 'Publico']
+        }
+        : {
+            problem: 'Summary',
+            stack: 'Stack',
+            links: 'Links',
+            details: 'Open details',
+            close: 'Close details',
+            readMore: 'Read more',
+            showLess: 'Show less',
+            featured: ['Featured', 'Architecture', 'Public']
+        };
 
     return (
         <div className="technical-cards-container">
             {projects.map((project, index) => (
-                <motion.div
-                    key={index}
-                    ref={el => cardRefs.current[index] = el}
-                    className="tech-card"
-                    initial={{ opacity: 0, y: 20 }}
+                <motion.article
+                    key={project.name}
+                    ref={(element) => {
+                        cardRefs.current[index] = element;
+                    }}
+                    className={`tech-card ${expandedId === index ? 'tech-card-open' : ''} ${mode === 'dark' ? 'tech-card-dark' : 'tech-card-light'}`}
+                    initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.08 }}
                 >
-                    {/* Header de la card */}
-                    <div className="tech-card-header" onClick={() => toggleExpand(index)}>
-                        <div className="terminal-dots">
-                            <span className="dot red">×</span>
-                            <span className="dot yellow">−</span>
-                            <span className="dot green">+</span>
+                    <button type="button" className="tech-card-header" onClick={() => toggleExpand(index)}>
+                        <div className="project-title-stack">
+                            <span className="project-kicker">{labels.featured[Math.min(index, labels.featured.length - 1)]}</span>
+                            <h3 className="project-title">{project.name}</h3>
+                            <p className="project-summary">
+                                {isMobile && project.resume.length > 170 && !textExpanded[index]
+                                    ? truncateText(project.resume)
+                                    : project.resume}
+                            </p>
                         </div>
-                        <div className="project-title">
-                            <span className="prompt">~/projects/$</span> {project.name}
+                        <div className="project-head-meta">
+                            <span className="project-tag">{project.technologies.slice(0, 2).join(' · ')}</span>
+                            <span className="expand-icon">{expandedId === index ? labels.close : labels.details}</span>
                         </div>
-                        <div className="expand-icon">
-                            {expandedId === index ? '▼' : '▶'}
-                        </div>
-                    </div>
+                    </button>
 
-                    {/* Contenido expandible */}
-                    <AnimatePresence>
+                    {isMobile && project.resume.length > 170 && (
+                        <button className="btn-expand-description" onClick={() => toggleTextExpand(index)}>
+                            {textExpanded[index] ? labels.showLess : labels.readMore}
+                        </button>
+                    )}
+
+                    <AnimatePresence initial={false}>
                         {expandedId === index && (
                             <motion.div
                                 className="tech-card-content"
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.28 }}
                             >
                                 <div className="video-section">
-                                    <VideoPlayer url={project.video} height={window.innerWidth <= 1024 ? "120px" : "200px"} />
+                                    <VideoPlayer url={project.video} height={window.innerWidth <= 1024 ? '180px' : '240px'} />
                                 </div>
 
                                 <div className="content-section">
-                                    <div className="code-block">
-                                        <span className="comment">// Project description</span>
-                                        <p>
-                                            {isMobile && project.resume.length > 120 && !textExpanded[index]
-                                                ? truncateText(project.resume)
-                                                : project.resume}
-                                        </p>
-                                        {isMobile && project.resume.length > 120 && (
-                                            <button
-                                                className="btn-expand-description"
-                                                onClick={() => toggleTextExpand(index)}
-                                            >
-                                                {textExpanded[index]
-                                                    ? (language === 'español' ? 'Ver menos' : 'Show less')
-                                                    : (language === 'español' ? 'Leer más' : 'Read more')
-                                                }
-                                            </button>
-                                        )}
-                                    </div>
-
-                                    <div className="project-links">
-                                        <span className="comment">// Quick access</span>
-                                        <div className="links">
-                                            <a href={project.git} target="_blank" rel="noopener noreferrer" className="link-button">
-                                                <span className="icon">📁</span> GitHub
-                                            </a>
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-button">
-                                                <span className="icon">🚀</span> Live Demo
-                                            </a>
+                                    <div className="detail-block">
+                                        <span className="comment">{labels.stack}</span>
+                                        <div className="tech-tags">
+                                            {project.technologies.map((tech) => (
+                                                <span key={tech} className="tech-tag">{tech}</span>
+                                            ))}
                                         </div>
                                     </div>
 
-                                    <div className="tech-stack">
-                                        <span className="comment">// Technologies used</span>
-                                        <div className="tech-tags">
-                                            {project.technologies.map((tech, idx) => (
-                                                <span key={idx} className="tech-tag">
-                                                    {tech}
-                                                </span>
-                                            ))}
+                                    <div className="project-links">
+                                        <span className="comment">{labels.links}</span>
+                                        <div className="links">
+                                            {project.git && (
+                                                <a href={project.git} target="_blank" rel="noopener noreferrer" className="link-button">
+                                                    GitHub
+                                                </a>
+                                            )}
+                                            {project.link && (
+                                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-button link-button-secondary">
+                                                    Live demo
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
                             </motion.div>
                         )}
                     </AnimatePresence>
-                </motion.div>
+                </motion.article>
             ))}
         </div>
     );

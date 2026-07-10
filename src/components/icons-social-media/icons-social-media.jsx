@@ -4,26 +4,22 @@ import { Link } from '@mui/material';
 
 function IconsSocialMedia() {
     return (
-        <div className='mt-5'>
-            <Link color="inherit" href="https://www.linkedin.com/in/marcos-alvarez-calabria">
+        <div className='social-links-row'>
+            <Link color="inherit" className="social-link-chip" href="https://www.linkedin.com/in/marcos-alvarez-calabria" underline="none">
                 <LinkedInIcon
                     sx={{
-                        "&:hover": { color: "blue" },
-                        marginLeft: "20px",
-                        marginTop: "10px",
-                        fontSize: 30
+                        fontSize: 22
                     }}
                 />
+                <span>LinkedIn</span>
             </Link>
-            <Link color="inherit" className='mr-2' href="https://github.com/marcosAlvarezCalabria?tab=repositories">
+            <Link color="inherit" className="social-link-chip" href="https://github.com/marcosAlvarezCalabria?tab=repositories" underline="none">
                 <GitHubIcon
                     sx={{
-                        "&:hover": { color: "blue" },
-                        marginLeft: "20px",
-                        marginTop: "10px",
-                        fontSize: 30
+                        fontSize: 22
                     }}
                 />
+                <span>GitHub</span>
             </Link>
         </div>
     );

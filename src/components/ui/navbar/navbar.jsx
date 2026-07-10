@@ -6,12 +6,11 @@ import './navbar.css';
 function NavbarComponent() {
     const { mode, toggleMode } = useContext(ModeContext);
     const { language, toggleLanguage } = useContext(LanguageContext);
-    const [showLightBeam, setShowLightBeam] = useState(true);
+    const [isAtTop, setIsAtTop] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
-            // Control light beam visibility on scroll
-            setShowLightBeam(window.scrollY === 0);
+            setIsAtTop(window.scrollY === 0);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -23,12 +22,19 @@ function NavbarComponent() {
     return (
         <nav className="navbar glass-panel container-fluid sticky-top fixed-top"
             style={{
-                maxHeight: "60px",
+                maxHeight: "78px",
                 borderBottom: "1px solid var(--surface-border)",
                 transition: "all 0.3s ease"
             }}>
-            <div className="d-flex flex-column justify-content-start">
-                <div className={`simple-buttons-container ${showLightBeam ? 'show-light-beam' : ''}`}>
+            <div className="nav-shell">
+                <a className="brand-mark" href="#top">Marcos Alvarez</a>
+                <div className="nav-links d-none d-md-flex">
+                    <a href="#about">{language === 'english' ? 'About' : 'Sobre mi'}</a>
+                    <a href="#projects">{language === 'english' ? 'Projects' : 'Proyectos'}</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">{language === 'english' ? 'Contact' : 'Contacto'}</a>
+                </div>
+                <div className={`simple-buttons-container ${isAtTop ? 'show-light-beam' : ''}`}>
                     <button
                         className={`simple-btn theme-btn ${mode === 'dark' ? 'dark-theme' : 'light-theme'}`}
                         onClick={handleMode}
